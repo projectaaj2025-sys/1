@@ -24,14 +24,21 @@
             --gray-800: #1e293b;
             --gray-900: #0f172a;
         }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
             font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
         }
-        .container { max-width: 1200px; margin: 0 auto; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
         .login-screen {
             max-width: 420px;
             margin: 80px auto;
@@ -43,130 +50,321 @@
             box-shadow: 0 25px 80px -20px rgba(0,0,0,0.3);
             animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
+
         @keyframes slideUp {
             from { opacity: 0; transform: translateY(40px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .login-icon { font-size: 4rem; margin-bottom: 16px; }
-        .login-screen h2 { color: var(--gray-900); font-size: 1.8rem; margin-bottom: 8px; }
-        .login-screen p { color: var(--gray-500); margin-bottom: 28px; }
+
+        .login-icon {
+            font-size: 4rem;
+            margin-bottom: 16px;
+        }
+
+        .login-screen h2 {
+            color: var(--gray-900);
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+        }
+
+        .login-screen p {
+            color: var(--gray-500);
+            margin-bottom: 28px;
+        }
+
         .input-field {
-            width: 100%; padding: 16px 20px; border: 2.5px solid var(--gray-200);
-            border-radius: 14px; font-size: 1rem; margin: 12px 0;
-            font-family: inherit; transition: all 0.3s ease;
+            width: 100%;
+            padding: 16px 20px;
+            border: 2.5px solid var(--gray-200);
+            border-radius: 14px;
+            font-size: 1rem;
+            margin: 12px 0;
+            font-family: inherit;
+            transition: all 0.3s ease;
         }
-        .input-field:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 4px rgba(99,102,241,0.1); }
+
+        .input-field:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(99,102,241,0.1);
+        }
+
         .btn {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white;
-            border: none; padding: 16px; border-radius: 14px; font-size: 1rem; font-weight: 700;
-            cursor: pointer; width: 100%; margin-top: 16px; transition: all 0.3s ease;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 14px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 16px;
+            transition: all 0.3s ease;
         }
-        .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(99,102,241,0.3); }
-        .error-msg { color: var(--danger); font-size: 0.9rem; margin-top: 12px; display: none; }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(99,102,241,0.3);
+        }
+
+        .error-msg {
+            color: var(--danger);
+            font-size: 0.9rem;
+            margin-top: 12px;
+            display: none;
+        }
+
         .dashboard { display: none; }
+
         .header-card {
-            background: rgba(255,255,255,0.97); backdrop-filter: blur(20px);
-            padding: 32px; border-radius: 24px; margin-bottom: 24px;
+            background: rgba(255,255,255,0.97);
+            backdrop-filter: blur(20px);
+            padding: 32px;
+            border-radius: 24px;
+            margin-bottom: 24px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.1);
         }
-        .header-card h1 { color: var(--gray-900); font-size: 1.8rem; margin-bottom: 4px; }
+
+        .header-card h1 {
+            color: var(--gray-900);
+            font-size: 1.8rem;
+            margin-bottom: 4px;
+        }
+
         .header-card p { color: var(--gray-500); }
-        .toolbar { display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
-        .btn-export { background: linear-gradient(135deg, var(--success), #16a34a); padding: 12px 28px; width: auto; }
-        .btn-clear { background: linear-gradient(135deg, var(--danger), #b91c1c); padding: 12px 28px; width: auto; }
-        .btn-refresh { background: linear-gradient(135deg, var(--gray-600), var(--gray-700)); padding: 12px 28px; width: auto; }
+
+        .toolbar {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .btn-export {
+            background: linear-gradient(135deg, var(--success), #16a34a);
+            padding: 12px 28px;
+            width: auto;
+        }
+
+        .btn-refresh {
+            background: linear-gradient(135deg, var(--gray-600), var(--gray-700));
+            padding: 12px 28px;
+            width: auto;
+        }
+
         .stats-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 24px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 24px;
         }
+
         .stat-card {
-            background: rgba(255,255,255,0.97); backdrop-filter: blur(20px);
-            padding: 28px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.5);
+            background: rgba(255,255,255,0.97);
+            backdrop-filter: blur(20px);
+            padding: 28px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.5);
         }
-        .stat-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.12); }
-        .stat-icon { font-size: 2rem; margin-bottom: 12px; }
-        .stat-value { font-size: 2.2rem; font-weight: 800; color: var(--primary); line-height: 1; }
-        .stat-label { color: var(--gray-500); font-size: 0.9rem; margin-top: 8px; font-weight: 500; }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+
+        .stat-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .stat-value {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        .stat-label {
+            color: var(--gray-500);
+            font-size: 0.9rem;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
         .stat-card.success .stat-value { color: var(--success); }
         .stat-card.warning .stat-value { color: var(--warning); }
         .stat-card.danger .stat-value { color: var(--danger); }
+
         .results-card {
-            background: rgba(255,255,255,0.97); backdrop-filter: blur(20px);
-            border-radius: 24px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            background: rgba(255,255,255,0.97);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
         }
+
         .results-header {
-            padding: 24px 28px; border-bottom: 1px solid var(--gray-100);
-            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+            padding: 24px 28px;
+            border-bottom: 1px solid var(--gray-100);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
         }
-        .results-header h3 { color: var(--gray-800); font-size: 1.2rem; }
+
+        .results-header h3 {
+            color: var(--gray-800);
+            font-size: 1.2rem;
+        }
+
         .search-box {
-            padding: 10px 16px; border: 2px solid var(--gray-200); border-radius: 10px;
-            font-family: inherit; font-size: 0.9rem; min-width: 200px;
+            padding: 10px 16px;
+            border: 2px solid var(--gray-200);
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            min-width: 200px;
         }
-        .search-box:focus { outline: none; border-color: var(--primary); }
-        table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+
+        .search-box:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
         th {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white;
-            padding: 16px 20px; text-align: left; font-weight: 600; font-size: 0.85rem;
-            text-transform: uppercase; letter-spacing: 0.5px; position: sticky; top: 0;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 16px 20px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: sticky;
+            top: 0;
         }
-        td { padding: 16px 20px; border-bottom: 1px solid var(--gray-100); color: var(--gray-700); }
+
+        td {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--gray-100);
+            color: var(--gray-700);
+        }
+
         tr:hover { background: var(--gray-50); }
-        .student-name { font-weight: 600; color: var(--gray-900); }
-        .score-badge {
-            display: inline-block; padding: 6px 14px; border-radius: 20px;
-            font-weight: 700; font-size: 0.85rem;
+
+        .student-name {
+            font-weight: 600;
+            color: var(--gray-900);
         }
+
+        .score-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
         .badge-high { background: #dcfce7; color: #166534; }
         .badge-mid { background: #fef9c3; color: #854d0e; }
         .badge-low { background: #fee2e2; color: #991b1b; }
+
         .grade-circle-small {
-            width: 32px; height: 32px; border-radius: 50%; display: inline-flex;
-            align-items: center; justify-content: center; font-weight: 800;
-            font-size: 0.9rem; color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.9rem;
+            color: white;
         }
+
         .grade-5 { background: linear-gradient(135deg, #22c55e, #16a34a); }
         .grade-4 { background: linear-gradient(135deg, #3b82f6, #2563eb); }
         .grade-3 { background: linear-gradient(135deg, #f59e0b, #d97706); }
         .grade-2 { background: linear-gradient(135deg, #ef4444, #dc2626); }
-        .time-cell { color: var(--gray-500); font-size: 0.9rem; }
-        .loading { text-align: center; padding: 60px 20px; }
+
+        .time-cell {
+            color: var(--gray-500);
+            font-size: 0.9rem;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
         .spinner {
-            width: 48px; height: 48px; border: 4px solid var(--gray-200);
-            border-top-color: var(--primary); border-radius: 50%;
-            animation: spin 1s linear infinite; margin: 0 auto 20px;
+            width: 48px;
+            height: 48px;
+            border: 4px solid var(--gray-200);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
         }
+
         @keyframes spin { to { transform: rotate(360deg); } }
-        .empty-state { text-align: center; padding: 60px 20px; color: var(--gray-500); }
-        .empty-state-icon { font-size: 4rem; margin-bottom: 16px; opacity: 0.5; }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--gray-500);
+        }
+
+        .empty-state-icon {
+            font-size: 4rem;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+
         .back-link {
-            position: fixed; bottom: 20px; right: 20px;
-            background: rgba(255,255,255,0.2); backdrop-filter: blur(10px);
-            color: white; padding: 12px 20px; border-radius: 50px;
-            text-decoration: none; font-size: 0.85rem; font-weight: 500;
-            transition: all 0.3s ease; z-index: 100;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            z-index: 100;
         }
-        .back-link:hover { background: rgba(255,255,255,0.3); transform: translateY(-2px); }
-        .info-box {
-            background: linear-gradient(135deg, #dbeafe, #eff6ff); border: 1px solid #93c5fd;
-            border-radius: 16px; padding: 16px 20px; margin-bottom: 24px;
-            display: flex; align-items: center; gap: 12px;
-            color: #1e40af; font-size: 0.95rem;
+
+        .back-link:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
         }
-        .info-box svg { flex-shrink: 0; }
+
         @media (max-width: 768px) {
             .login-screen { padding: 32px 24px; margin: 40px auto; }
             .stats-grid { grid-template-columns: 1fr 1fr; }
             table { font-size: 0.85rem; }
             th, td { padding: 12px 10px; }
             .toolbar { flex-direction: column; }
-            .btn-export, .btn-clear, .btn-refresh { width: 100%; }
+            .btn-export, .btn-refresh { width: 100%; }
             .results-header { flex-direction: column; align-items: stretch; }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Логин -->
         <div class="login-screen" id="loginScreen">
             <div class="login-icon">🔐</div>
             <h2>Панель учителя</h2>
@@ -175,20 +373,19 @@
             <button class="btn" onclick="login()">Войти</button>
             <p class="error-msg" id="loginError">Неверный пароль</p>
         </div>
+
+        <!-- Дашборд -->
         <div class="dashboard" id="dashboard">
             <div class="header-card">
                 <h1>📊 Результаты тестирования</h1>
                 <p>Статистика и результаты всех учеников</p>
             </div>
-            <div class="info-box">
-                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                <span>Результаты сохраняются в браузере каждого ученика. Чтобы увидеть все результаты, откройте эту панель на том же устройстве, где проходили тест.</span>
-            </div>
+
             <div class="toolbar">
                 <button class="btn btn-export" onclick="exportToCSV()">📥 Экспорт CSV</button>
                 <button class="btn btn-refresh" onclick="loadResults()">🔄 Обновить</button>
-                <button class="btn btn-clear" onclick="clearResults()">🗑️ Очистить</button>
             </div>
+
             <div class="stats-grid" id="statsGrid">
                 <div class="stat-card">
                     <div class="stat-icon">👥</div>
@@ -211,6 +408,7 @@
                     <div class="stat-label">Лучший результат</div>
                 </div>
             </div>
+
             <div class="results-card">
                 <div class="results-header">
                     <h3>📋 Список результатов</h3>
@@ -223,7 +421,6 @@
                 <div class="empty-state hidden" id="emptyState">
                     <div class="empty-state-icon">📭</div>
                     <p>Пока нет результатов</p>
-                    <p style="font-size: 0.85rem; margin-top: 8px;">Ученики должны пройти тест на этом устройстве</p>
                 </div>
                 <table class="hidden" id="resultsTable">
                     <thead>
@@ -242,12 +439,15 @@
             </div>
         </div>
     </div>
+
     <a href="index.html" class="back-link">← Назад к тесту</a>
+
     <script>
         const CONFIG = {
-            TEACHER_PASSWORD: 'teacher123',
-            STORAGE_KEY: 'test_results'
+            GOOGLE_SCRIPT_URL: 'https://script.google.com/macros/s/ВАШ_SCRIPT_ID/exec',
+            TEACHER_PASSWORD: 'teacher123'
         };
+
         let resultsData = [];
         let filteredData = [];
 
@@ -262,45 +462,68 @@
                 document.getElementById('password').value = '';
             }
         }
-        function loadResults() {
+
+        async function loadResults() {
             document.getElementById('loadingResults').classList.remove('hidden');
             document.getElementById('resultsTable').classList.add('hidden');
             document.getElementById('emptyState').classList.add('hidden');
+
             try {
-                const stored = localStorage.getItem(CONFIG.STORAGE_KEY);
-                resultsData = stored ? JSON.parse(stored) : [];
+                const response = await fetch(CONFIG.GOOGLE_SCRIPT_URL + '?action=getResults', {
+                    method: 'GET',
+                    mode: 'cors'
+                });
+
+                if (!response.ok) throw new Error('Network error');
+
+                resultsData = await response.json();
+
                 if (!resultsData || resultsData.length === 0) {
                     showEmpty();
                     return;
                 }
+
+                // Сортируем по дате (новые сверху)
                 resultsData.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
                 filteredData = [...resultsData];
+
                 document.getElementById('loadingResults').classList.add('hidden');
                 document.getElementById('resultsTable').classList.remove('hidden');
+
                 renderResults();
                 updateStats();
             } catch (error) {
                 console.error('Ошибка:', error);
-                showEmpty();
+                document.getElementById('loadingResults').innerHTML = 
+                    '<p style="color: #ef4444;">⚠️ Ошибка загрузки. Проверьте подключение к Google Sheets.</p>';
             }
         }
+
         function renderResults() {
             const tbody = document.getElementById('resultsBody');
             tbody.innerHTML = '';
+
             filteredData.forEach(row => {
                 const percent = parseInt(row.percent) || 0;
                 let badgeClass = 'badge-low';
                 if (percent >= 75) badgeClass = 'badge-high';
                 else if (percent >= 60) badgeClass = 'badge-mid';
+
                 let grade = '2';
                 if (percent >= 90) grade = '5';
                 else if (percent >= 75) grade = '4';
                 else if (percent >= 60) grade = '3';
-                const timeSec = parseInt(row.timeSpent) || 0;
+
+                const timeSec = parseInt(row.timespent) || parseInt(row.timeSpent) || 0;
                 const minutes = Math.floor(timeSec / 60);
                 const seconds = timeSec % 60;
+
                 const date = new Date(row.timestamp);
-                const dateStr = date.toLocaleString('ru', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
+                const dateStr = date.toLocaleString('ru', { 
+                    day: '2-digit', month: '2-digit', 
+                    hour: '2-digit', minute: '2-digit' 
+                });
+
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
                     <td>${dateStr}</td>
@@ -314,63 +537,68 @@
                 tbody.appendChild(tr);
             });
         }
+
         function updateStats() {
             if (resultsData.length === 0) return;
+
             const total = resultsData.length;
             const avgScore = resultsData.reduce((sum, r) => sum + (parseInt(r.score) || 0), 0) / total;
-            const avgTime = resultsData.reduce((sum, r) => sum + (parseInt(r.timeSpent) || 0), 0) / total;
+            const avgTime = resultsData.reduce((sum, r) => sum + (parseInt(r.timespent) || parseInt(r.timeSpent) || 0), 0) / total;
             const best = Math.max(...resultsData.map(r => parseInt(r.score) || 0));
+
             document.getElementById('totalStudents').textContent = total;
             document.getElementById('avgScore').textContent = avgScore.toFixed(1);
             document.getElementById('avgTime').textContent = Math.floor(avgTime / 60) + ' мин';
             document.getElementById('bestScore').textContent = best;
         }
+
         function filterResults() {
             const query = document.getElementById('searchBox').value.toLowerCase().trim();
-            filteredData = query ? resultsData.filter(r => (r.name || '').toLowerCase().includes(query)) : [...resultsData];
+            filteredData = query 
+                ? resultsData.filter(r => (r.name || '').toLowerCase().includes(query))
+                : [...resultsData];
             renderResults();
         }
+
         function showEmpty() {
             document.getElementById('loadingResults').classList.add('hidden');
             document.getElementById('resultsTable').classList.add('hidden');
             document.getElementById('emptyState').classList.remove('hidden');
+
             document.getElementById('totalStudents').textContent = '0';
             document.getElementById('avgScore').textContent = '-';
             document.getElementById('avgTime').textContent = '-';
             document.getElementById('bestScore').textContent = '-';
         }
-        function clearResults() {
-            if (confirm('Вы уверены, что хотите удалить ВСЕ результаты? Это действие нельзя отменить!')) {
-                localStorage.removeItem(CONFIG.STORAGE_KEY);
-                resultsData = [];
-                filteredData = [];
-                showEmpty();
-            }
-        }
+
         function exportToCSV() {
-            let csv = '﻿Дата,Имя,Правильных,Всего,Процент,Время(сек),Оценка
-';
+            let csv = '\uFEFFДата,Имя,Правильных,Всего,Процент,Время(сек),Оценка\n';
+
             filteredData.forEach(row => {
                 const percent = parseInt(row.percent) || 0;
                 let grade = '2';
                 if (percent >= 90) grade = '5';
                 else if (percent >= 75) grade = '4';
                 else if (percent >= 60) grade = '3';
-                const timeSec = parseInt(row.timeSpent) || 0;
-                csv += `"${row.timestamp}","${row.name}",${row.score},${row.total},${percent}%,${timeSec},${grade}
-`;
+
+                const timeSec = parseInt(row.timespent) || parseInt(row.timeSpent) || 0;
+
+                csv += `"${row.timestamp}","${row.name}",${row.score},${row.total},${percent}%,${timeSec},${grade}\n`;
             });
+
             const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
             const link = document.createElement('a');
             link.href = URL.createObjectURL(blob);
             link.download = `results_${new Date().toISOString().slice(0,10)}.csv`;
             link.click();
         }
+
         function escapeHtml(text) {
             const div = document.createElement('div');
             div.textContent = text || '';
             return div.innerHTML;
         }
+
         document.getElementById('password')?.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') login();
         });

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎓 Тест — Основы научной деятельности</title>
+    <title>🎓 Тестирование — Основы НИД и академическое письмо</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -14,6 +14,7 @@
             --success: #22c55e;
             --warning: #f59e0b;
             --danger: #ef4444;
+            --dark: #0f172a;
             --gray-50: #f8fafc;
             --gray-100: #f1f5f9;
             --gray-200: #e2e8f0;
@@ -25,7 +26,9 @@
             --gray-800: #1e293b;
             --gray-900: #0f172a;
         }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
             font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
@@ -38,30 +41,40 @@
             padding: 20px;
             overflow-x: hidden;
         }
+
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
+
         .floating-shapes {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none; overflow: hidden; z-index: 0;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
         }
+
         .shape {
-            position: absolute; border-radius: 50%;
+            position: absolute;
+            border-radius: 50%;
             background: rgba(255,255,255,0.1);
             animation: float 20s infinite ease-in-out;
         }
-        .shape:nth-child(1) { width: 80px; height: 80px; top: 10%; left: 10%; }
+
+        .shape:nth-child(1) { width: 80px; height: 80px; top: 10%; left: 10%; animation-delay: 0s; }
         .shape:nth-child(2) { width: 120px; height: 120px; top: 70%; left: 80%; animation-delay: -5s; }
         .shape:nth-child(3) { width: 60px; height: 60px; top: 40%; left: 85%; animation-delay: -10s; }
         .shape:nth-child(4) { width: 100px; height: 100px; top: 80%; left: 20%; animation-delay: -15s; }
         .shape:nth-child(5) { width: 50px; height: 50px; top: 20%; left: 60%; animation-delay: -7s; }
+
         @keyframes float {
             0%, 100% { transform: translateY(0) rotate(0deg); }
             33% { transform: translateY(-30px) rotate(120deg); }
             66% { transform: translateY(20px) rotate(240deg); }
         }
+
         .container {
             background: rgba(255, 255, 255, 0.97);
             backdrop-filter: blur(20px);
@@ -70,180 +83,448 @@
             max-width: 850px;
             width: 100%;
             box-shadow: 0 25px 80px -20px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.2);
-            position: relative; z-index: 1;
+            position: relative;
+            z-index: 1;
             animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
+
         @keyframes slideUp {
             from { opacity: 0; transform: translateY(60px) scale(0.95); }
             to { opacity: 1; transform: translateY(0) scale(1); }
         }
+
         .timer {
-            position: fixed; top: 24px; right: 24px;
+            position: fixed;
+            top: 24px;
+            right: 24px;
             background: linear-gradient(135deg, #ef4444, #f97316);
-            color: white; padding: 16px 28px; border-radius: 50px;
-            font-size: 1.3rem; font-weight: 800;
+            color: white;
+            padding: 16px 28px;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: 800;
             box-shadow: 0 10px 40px rgba(239,68,68,0.4);
-            z-index: 1000; display: flex; align-items: center; gap: 10px;
-            animation: pulse 2s infinite; transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: pulse 2s infinite;
+            transition: all 0.3s ease;
         }
+
         .timer svg { width: 22px; height: 22px; }
+
         @keyframes pulse {
             0%, 100% { box-shadow: 0 10px 40px rgba(239,68,68,0.4); }
             50% { box-shadow: 0 10px 50px rgba(239,68,68,0.6); }
         }
+
         .timer.warning {
             background: linear-gradient(135deg, #f59e0b, #ef4444);
             animation: shake 0.5s infinite, pulse 1s infinite;
         }
+
         .timer.critical {
             background: linear-gradient(135deg, #dc2626, #991b1b);
             animation: shake 0.3s infinite;
         }
+
         @keyframes shake {
             0%, 100% { transform: translateX(0); }
             25% { transform: translateX(-6px); }
             75% { transform: translateX(6px); }
         }
+
         .header { text-align: center; margin-bottom: 36px; }
-        .header-icon { font-size: 4rem; margin-bottom: 16px; display: inline-block; animation: bounce 2s infinite; }
-        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+        .header-icon {
+            font-size: 4rem;
+            margin-bottom: 16px;
+            display: inline-block;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
         .header h1 {
-            color: var(--gray-900); font-size: 2.2rem; font-weight: 800; margin-bottom: 8px;
+            color: var(--gray-900);
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 8px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .header p { color: var(--gray-500); font-size: 1.05rem; }
+
+        .header p {
+            color: var(--gray-500);
+            font-size: 1.05rem;
+        }
+
         .progress-wrapper { margin-bottom: 32px; }
+
         .progress-info {
-            display: flex; justify-content: space-between; margin-bottom: 10px;
-            font-size: 0.9rem; color: var(--gray-500); font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            color: var(--gray-500);
+            font-weight: 500;
         }
-        .progress-bar { width: 100%; height: 10px; background: var(--gray-100); border-radius: 10px; overflow: hidden; position: relative; }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: var(--gray-100);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
         .progress-fill {
-            height: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border-radius: 10px; transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative; overflow: hidden;
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
         }
+
         .progress-fill::after {
-            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 100%; height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
             animation: shimmer 2s infinite;
         }
-        @keyframes shimmer { 0% { left: -100%; } 100% { left: 100%; } }
-        .question-card { animation: slideInRight 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .question-card {
+            animation: slideInRight 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
         @keyframes slideInRight {
             from { opacity: 0; transform: translateX(40px); }
             to { opacity: 1; transform: translateX(0); }
         }
-        .question-number { color: var(--primary); font-weight: 700; margin-bottom: 12px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; }
-        .question-text { font-size: 1.25rem; color: var(--gray-800); margin-bottom: 28px; line-height: 1.6; font-weight: 600; }
+
+        .question-number {
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 12px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .question-text {
+            font-size: 1.25rem;
+            color: var(--gray-800);
+            margin-bottom: 28px;
+            line-height: 1.6;
+            font-weight: 600;
+        }
+
         .options { display: flex; flex-direction: column; gap: 12px; }
+
         .option {
-            padding: 18px 22px; border: 2.5px solid var(--gray-200); border-radius: 18px;
-            cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            background: white; font-size: 1rem; color: var(--gray-700);
-            position: relative; overflow: hidden; display: flex; align-items: center; gap: 14px;
+            padding: 18px 22px;
+            border: 2.5px solid var(--gray-200);
+            border-radius: 18px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: white;
+            font-size: 1rem;
+            color: var(--gray-700);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 14px;
         }
+
         .option-letter {
-            width: 34px; height: 34px; border-radius: 10px; background: var(--gray-100);
-            color: var(--gray-500); display: flex; align-items: center; justify-content: center;
-            font-weight: 700; font-size: 0.9rem; flex-shrink: 0; transition: all 0.3s ease;
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            background: var(--gray-100);
+            color: var(--gray-500);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
         }
-        .option:hover { border-color: var(--primary-light); background: linear-gradient(135deg, #f5f3ff, #fff); transform: translateX(8px); box-shadow: 0 4px 20px rgba(99,102,241,0.1); }
-        .option:hover .option-letter { background: var(--primary); color: white; }
+
+        .option:hover {
+            border-color: var(--primary-light);
+            background: linear-gradient(135deg, #f5f3ff, #fff);
+            transform: translateX(8px);
+            box-shadow: 0 4px 20px rgba(99,102,241,0.1);
+        }
+
+        .option:hover .option-letter {
+            background: var(--primary);
+            color: white;
+        }
+
         .option.selected {
-            border-color: var(--primary); background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white; transform: scale(1.02); box-shadow: 0 10px 40px rgba(99,102,241,0.3);
+            border-color: var(--primary);
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            transform: scale(1.02);
+            box-shadow: 0 10px 40px rgba(99,102,241,0.3);
         }
-        .option.selected .option-letter { background: rgba(255,255,255,0.2); color: white; }
+
+        .option.selected .option-letter {
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+
         .option::before {
-            content: ''; position: absolute; top: 50%; left: 50%; width: 0; height: 0;
-            border-radius: 50%; background: rgba(255,255,255,0.3); transform: translate(-50%, -50%);
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 0; height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            transform: translate(-50%, -50%);
             transition: width 0.6s, height 0.6s;
         }
-        .option:active::before { width: 400px; height: 400px; }
-        .btn {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white;
-            border: none; padding: 18px 48px; border-radius: 16px; font-size: 1.1rem; font-weight: 700;
-            cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            margin-top: 32px; width: 100%; position: relative; overflow: hidden; letter-spacing: 0.5px;
+
+        .option:active::before {
+            width: 400px; height: 400px;
         }
+
+        .btn {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            padding: 18px 48px;
+            border-radius: 16px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-top: 32px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.5px;
+        }
+
         .btn::after {
-            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
             transition: left 0.5s;
         }
+
         .btn:hover::after { left: 100%; }
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(99,102,241,0.4); }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(99,102,241,0.4);
+        }
+
         .btn:active { transform: translateY(-1px); }
-        .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
         .input-field {
-            width: 100%; padding: 18px 24px; border: 2.5px solid var(--gray-200); border-radius: 16px;
-            font-size: 1.1rem; margin: 20px 0; transition: all 0.3s ease;
-            font-family: inherit; color: var(--gray-800);
+            width: 100%;
+            padding: 18px 24px;
+            border: 2.5px solid var(--gray-200);
+            border-radius: 16px;
+            font-size: 1.1rem;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            color: var(--gray-800);
         }
-        .input-field:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 4px rgba(99,102,241,0.1); }
+
+        .input-field:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(99,102,241,0.1);
+        }
+
         .input-field::placeholder { color: var(--gray-400); }
+
         .result-score {
-            font-size: 5rem; font-weight: 800;
+            font-size: 5rem;
+            font-weight: 800;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            margin: 10px 0; line-height: 1;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 10px 0;
+            line-height: 1;
         }
-        .result-details { color: var(--gray-600); font-size: 1.2rem; margin-bottom: 24px; }
-        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 32px 0; }
+
+        .result-details {
+            color: var(--gray-600);
+            font-size: 1.2rem;
+            margin-bottom: 24px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 32px 0;
+        }
+
         .stat-item {
-            background: linear-gradient(135deg, var(--gray-50), white); padding: 24px 16px;
-            border-radius: 20px; text-align: center; border: 1px solid var(--gray-100); transition: transform 0.3s ease;
+            background: linear-gradient(135deg, var(--gray-50), white);
+            padding: 24px 16px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid var(--gray-100);
+            transition: transform 0.3s ease;
         }
+
         .stat-item:hover { transform: translateY(-5px); }
-        .stat-value { font-size: 1.8rem; font-weight: 800; color: var(--primary); }
-        .stat-label { color: var(--gray-500); font-size: 0.85rem; margin-top: 6px; font-weight: 500; }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            color: var(--gray-500);
+            font-size: 0.85rem;
+            margin-top: 6px;
+            font-weight: 500;
+        }
+
         .confetti {
-            position: fixed; width: 12px; height: 12px; z-index: 9999;
+            position: fixed;
+            width: 12px; height: 12px;
+            z-index: 9999;
             animation: confetti-fall 4s ease-out forwards;
         }
+
         @keyframes confetti-fall {
             0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
             100% { transform: translateY(100vh) rotate(1080deg); opacity: 0; }
         }
-        .loading-screen { text-align: center; padding: 60px 20px; }
-        .loader { width: 60px; height: 60px; border: 4px solid var(--gray-200); border-top-color: var(--primary); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 24px; }
+
+        .loading-screen {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .loader {
+            width: 60px; height: 60px;
+            border: 4px solid var(--gray-200);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 24px;
+        }
+
         @keyframes spin { to { transform: rotate(360deg); } }
+
         .error-message {
-            background: linear-gradient(135deg, #fef2f2, #fee2e2); color: #dc2626;
-            padding: 16px 20px; border-radius: 14px; margin: 16px 0; font-weight: 500;
-            display: none; border-left: 4px solid #dc2626;
+            background: linear-gradient(135deg, #fef2f2, #fee2e2);
+            color: #dc2626;
+            padding: 16px 20px;
+            border-radius: 14px;
+            margin: 16px 0;
+            font-weight: 500;
+            display: none;
+            border-left: 4px solid #dc2626;
         }
+
         .warning-box {
-            background: linear-gradient(135deg, #fffbeb, #fef3c7); border: 1px solid #fcd34d;
-            border-radius: 16px; padding: 16px 20px; margin: 20px 0;
-            display: flex; align-items: center; gap: 12px; color: #92400e; font-size: 0.95rem;
+            background: linear-gradient(135deg, #fffbeb, #fef3c7);
+            border: 1px solid #fcd34d;
+            border-radius: 16px;
+            padding: 16px 20px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #92400e;
+            font-size: 0.95rem;
         }
+
         .warning-box svg { flex-shrink: 0; }
+
         .hidden { display: none !important; }
+
         .grade-circle {
-            width: 80px; height: 80px; border-radius: 50%; display: flex;
-            align-items: center; justify-content: center; font-size: 2rem; font-weight: 800;
-            margin: 0 auto 20px; color: white; animation: popIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            width: 80px; height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 800;
+            margin: 0 auto 20px;
+            color: white;
+            animation: popIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        @keyframes popIn { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+        @keyframes popIn {
+            from { transform: scale(0); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
         .grade-5 { background: linear-gradient(135deg, #22c55e, #16a34a); }
         .grade-4 { background: linear-gradient(135deg, #3b82f6, #2563eb); }
         .grade-3 { background: linear-gradient(135deg, #f59e0b, #d97706); }
         .grade-2 { background: linear-gradient(135deg, #ef4444, #dc2626); }
+
         .teacher-link {
-            position: fixed; bottom: 20px; right: 20px;
-            background: rgba(255,255,255,0.2); backdrop-filter: blur(10px);
-            color: white; padding: 12px 20px; border-radius: 50px;
-            text-decoration: none; font-size: 0.85rem; font-weight: 500;
-            transition: all 0.3s ease; z-index: 100;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            z-index: 100;
         }
-        .teacher-link:hover { background: rgba(255,255,255,0.3); transform: translateY(-2px); }
+
+        .teacher-link:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
         .subject-badge {
-            display: inline-block; background: linear-gradient(135deg, var(--primary-light), var(--secondary));
-            color: white; padding: 8px 20px; border-radius: 50px; font-size: 0.85rem; font-weight: 600; margin-bottom: 16px;
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-light), var(--secondary));
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 16px;
         }
+
         @media (max-width: 640px) {
             .container { padding: 28px; border-radius: 24px; }
             .header h1 { font-size: 1.6rem; }
@@ -256,17 +537,23 @@
 </head>
 <body>
     <div class="floating-shapes">
-        <div class="shape"></div><div class="shape"></div><div class="shape"></div><div class="shape"></div><div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
     </div>
+
     <div class="timer hidden" id="timer">
         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
         <span id="timerText">30:00</span>
     </div>
+
     <div class="container" id="app">
         <div class="start-screen" id="startScreen">
             <div class="header">
                 <div class="header-icon">🎓</div>
-                <div class="subject-badge">Основы научной деятельности</div>
+                <div class="subject-badge">Основы НИД и академическое письмо</div>
                 <h1>Тестирование</h1>
                 <p>30 случайных вопросов из 120 • 30 минут</p>
             </div>
@@ -278,285 +565,311 @@
             <input type="text" class="input-field" id="studentName" placeholder="Введите ваше имя и фамилию" maxlength="50" autocomplete="off">
             <button class="btn" onclick="startTest()" id="startBtn">Начать тест →</button>
         </div>
+
         <div class="question-card hidden" id="questionScreen">
             <div class="progress-wrapper">
                 <div class="progress-info">
                     <span id="progressText">Вопрос 1 из 30</span>
                     <span id="progressPercent">3%</span>
                 </div>
-                <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
             </div>
             <div class="question-number" id="questionNumber">Вопрос 1</div>
             <div class="question-text" id="questionText"></div>
             <div class="options" id="optionsContainer"></div>
             <button class="btn" onclick="nextQuestion()" id="nextBtn" disabled>Далее →</button>
         </div>
+
         <div class="result-screen hidden" id="resultScreen">
-            <div class="header"><h1>🎉 Результаты</h1></div>
+            <div class="header">
+                <h1>🎉 Результаты</h1>
+            </div>
             <div class="grade-circle" id="gradeCircle">5</div>
             <div class="result-score" id="scoreDisplay">0/30</div>
             <div class="result-details" id="resultDetails"></div>
             <div class="stats-grid">
-                <div class="stat-item"><div class="stat-value" id="percentValue">0%</div><div class="stat-label">Правильных</div></div>
-                <div class="stat-item"><div class="stat-value" id="timeValue">0:00</div><div class="stat-label">Время</div></div>
-                <div class="stat-item"><div class="stat-value" id="gradeValue">-</div><div class="stat-label">Оценка</div></div>
+                <div class="stat-item">
+                    <div class="stat-value" id="percentValue">0%</div>
+                    <div class="stat-label">Правильных</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="timeValue">0:00</div>
+                    <div class="stat-label">Время</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="gradeValue">-</div>
+                    <div class="stat-label">Оценка</div>
+                </div>
             </div>
             <button class="btn" onclick="location.reload()">Завершить</button>
         </div>
+
         <div class="blocked-screen hidden" id="blockedScreen" style="text-align: center;">
             <div class="header-icon" style="font-size: 5rem;">🚫</div>
             <h2 style="color: var(--gray-800); margin-bottom: 12px;">Тест уже пройден</h2>
-            <p style="color: var(--gray-500); line-height: 1.6;">Вы уже проходили этот тест.<br>Повторное прохождение невозможно с этого устройства.</p>
+            <p style="color: var(--gray-500); line-height: 1.6;">
+                Вы уже проходили этот тест.<br>
+                Повторное прохождение невозможно с этого устройства.
+            </p>
             <div style="margin-top: 24px; padding: 16px; background: var(--gray-50); border-radius: 12px;">
-                <p style="color: var(--gray-500); font-size: 0.9rem;">Последняя попытка: <strong id="lastAttempt">-</strong></p>
+                <p style="color: var(--gray-500); font-size: 0.9rem;">
+                    Последняя попытка: <strong id="lastAttempt">-</strong>
+                </p>
             </div>
         </div>
+
         <div class="loading-screen hidden" id="loadingScreen">
             <div class="loader"></div>
             <p style="color: var(--gray-500); font-weight: 500;">Загрузка вопросов...</p>
         </div>
     </div>
+
     <a href="teacher.html" class="teacher-link">👨‍🏫 Панель учителя</a>
+
     <script>
-const QUESTIONS_DB = [{"id": 1, "question": "Авторские рассуждения на какую-либо тему — это:", "option1": "эссе", "option2": "монография", "option3": "диссертация", "option4": "автореферат", "option5": "статья", "correct": "1", "active": "TRUE"}, {"id": 2, "question": "Важнейшее отличие диссертации от монографии — это:", "option1": "форма существования: монография — печатный текст, диссертация — рукописный", "option2": "нет отличий", "option3": "диссертация – это научный труд, а монография – это художественное произведение", "option4": "диссертация – это художественное произведение, а монография – это научный труд", "option5": "монография – это краткое содержание диссертации", "correct": "1", "active": "TRUE"}, {"id": 3, "question": "Для сферы научной информации выделяют академические жанровые разновидности", "option1": "реферат, аннотация и рецензия", "option2": "заявление, приказ,", "option3": "удостоверение, паспорт", "option4": "журнал, книга", "option5": "роман, эссе", "correct": "1", "active": "TRUE"}, {"id": 4, "question": "Доводы, используемые автором для доказательства своей правоты — это:", "option1": "аргументы", "option2": "причины", "option3": "следствия", "option4": "анализ", "option5": "синтез", "correct": "1", "active": "TRUE"}, {"id": 5, "question": "Заключение следует после", "option1": "основной части", "option2": "введения", "option3": "актуальности", "option4": "материалов и методов", "option5": "аннотации", "correct": "1", "active": "TRUE"}, {"id": 6, "question": "Заключительный этап создания рукописи — ...", "option1": "оформление", "option2": "написание основной части", "option3": "написание выводов", "option4": "написание актуальности", "option5": "написание введения", "correct": "1", "active": "TRUE"}, {"id": 7, "question": "Из перечисленного, частями композиции текста являются:", "option1": "введение", "option2": "заключение", "option3": "основная часть", "option4": "а), б) и в) вместе", "option5": "вступление, результаты исследований", "correct": "1", "active": "TRUE"}, {"id": 8, "question": "Иллюстративный материал, который в компактной форме представляет динамику изменений процессов или состояний, называется:", "option1": "графиком", "option2": "таблицей", "option3": "компакт-диском", "option4": "иллюстрацией", "option5": "наглядностью", "correct": "1", "active": "TRUE"}, {"id": 9, "question": "К видам академического письма не относится:", "option1": "язык средств массовой информации", "option2": "лекция", "option3": "монография", "option4": "диссертация", "option5": "доклад", "correct": "1", "active": "TRUE"}, {"id": 10, "question": "К видам академического письма относится:", "option1": "лекция", "option2": "статья из новостной газеты", "option3": "роман", "option4": "повесть", "option5": "рассказ", "correct": "1", "active": "TRUE"}, {"id": 11, "question": "Книгой, помогающей адресату усвоить содержание определенного курса, определенной учебной дисциплины, является:", "option1": "учебник", "option2": "путеводитель", "option3": "монография", "option4": "статья", "option5": "доклад", "correct": "1", "active": "TRUE"}, {"id": 12, "question": "Краткое устное или письменное изложение научной работы — это:", "option1": "реферат", "option2": "доклад", "option3": "рукопись", "option4": "диссертация", "option5": "статья", "correct": "1", "active": "TRUE"}, {"id": 13, "question": "Материалы, не являющиеся насущными для понимания решения научной задачи, выносятся:", "option1": "в приложения", "option2": "в введение", "option3": "в заключение", "option4": "в выводы", "option5": "в основной части", "correct": "1", "active": "TRUE"}, {"id": 14, "question": "Освоить какой-либо фрагмент данного курса, спецкурса, факультатива помогает:", "option1": "учебное пособие", "option2": "статья", "option3": "монография", "option4": "диссертация", "option5": "доклад", "correct": "1", "active": "TRUE"}, {"id": 15, "question": "Основной формой речи научного стиля является:", "option1": "письменная", "option2": "устная", "option3": "диалоговая", "option4": "интервью", "option5": "в) и г) вместе", "correct": "1", "active": "TRUE"}, {"id": 16, "question": "Основную содержательную информацию на специальном языке передают:", "option1": "термины", "option2": "аббревиатуры", "option3": "переводчик", "option4": "понятия", "option5": "СМИ", "correct": "1", "active": "TRUE"}, {"id": 17, "question": "Основные положения книги, статьи — это:", "option1": "тезисы", "option2": "эссе", "option3": "план", "option4": "содержание", "option5": "вступление", "correct": "1", "active": "TRUE"}, {"id": 18, "question": "Особым образом организованный фрагмент текста, служащий для компактного представления материала, который предварительно подвергся структурной и статистической обработке, — это:", "option1": "таблица", "option2": "реферат", "option3": "конспект", "option4": "выводы", "option5": "заключение", "correct": "1", "active": "TRUE"}, {"id": 19, "question": "Первая страница научной работы — это:", "option1": "титульный лист", "option2": "введение", "option3": "«шапка»", "option4": "ФИО автора", "option5": "эпиграф", "correct": "1", "active": "TRUE"}, {"id": 20, "question": "Простейшей рубрикой является:", "option1": "абзац", "option2": "план", "option3": "содержание", "option4": "титульный лист", "option5": "реферат", "correct": "1", "active": "TRUE"}, {"id": 21, "question": "Развернутую информацию о каком-либо тексте содержит:", "option1": "реферат", "option2": "монография", "option3": "монолог", "option4": "отчет", "option5": "статья", "correct": "1", "active": "TRUE"}, {"id": 22, "question": "Краткое устное или письменное изложение научной работы— это:", "option1": "Реферат", "option2": "монография", "option3": "монолог", "option4": "отчет", "option5": "статья", "correct": "1", "active": "TRUE"}, {"id": 23, "question": "Род речи, помогающий формированию научного мировоззрения, отличающийся научным изложением, глубокой аргументированностью и научной культурой, — это красноречие ...", "option1": "академическое", "option2": "дипломатическое", "option3": "национальное", "option4": "деловое", "option5": "духовное", "correct": "1", "active": "TRUE"}, {"id": 24, "question": "Рубрикация текста — это:", "option1": "деление текста на составные части", "option2": "составление плана", "option3": "написание введения", "option4": "создание таблиц", "option5": "презентация", "correct": "1", "active": "TRUE"}, {"id": 25, "question": "Систематическая, логическая связная запись, объединяющая план, тезисы, выписки или, по крайней мере, два из этих типов записи — ...", "option1": "конспект", "option2": "доклад", "option3": "статья", "option4": "эссе", "option5": "диссертация", "correct": "1", "active": "TRUE"}, {"id": 26, "question": "Системная организация, наличие дефиниции, однозначность в пределах одной терминосистемы, отсутствие экспрессивной окраски, стилистическая нейтральность — это особые свойства ...", "option1": "термина", "option2": "понятия", "option3": "аббревиатуры", "option4": "делового языка", "option5": "реферата", "correct": "1", "active": "TRUE"}, {"id": 27, "question": "Словесное, устное или письменное произведение, представляющее собой единство некоторого более или менее завершенного содержания, — ...", "option1": "текст", "option2": "диссертация", "option3": "монография", "option4": "реферат", "option5": "статья", "correct": "1", "active": "TRUE"}, {"id": 28, "question": "Слово или словосочетание, обозначающее понятие специальной области или деятельности", "option1": "термин", "option2": "аббревиатура", "option3": "понятие", "option4": "профессионализмы", "option5": "жаргонизмы", "correct": "1", "active": "TRUE"}, {"id": 29, "question": "Смысловым ядром специального языка являются:", "option1": "термин", "option2": "аббревиатура", "option3": "морфемы", "option4": "профессионализмы", "option5": "жаргонизмы", "correct": "1", "active": "TRUE"}, {"id": 30, "question": "Со сферой научных исследований, публичных научных докладов и выступлений связан подстиль", "option1": "академический", "option2": "технический", "option3": "терминологический", "option4": "учебный", "option5": "образовательный", "correct": "1", "active": "TRUE"}, {"id": 31, "question": "Совокупность специальных слов различных областей науки и техники, функционирующих в сфере профессионального общения, — это:", "option1": "терминология", "option2": "тавтология", "option3": "словарь", "option4": "условные обозначения", "option5": "диаграмма", "correct": "1", "active": "TRUE"}, {"id": 32, "question": "Совокупность специальных терминов-названий, употребляющихся в данной научной области для названия типичных объектов науки, — это:", "option1": "номенклатурные понятия", "option2": "словарь", "option3": "термины", "option4": "профессионализмы", "option5": "жаргонизмы", "correct": "1", "active": "TRUE"}, {"id": 33, "question": "Соотносимы с описаниями и способны заменять их в тексте чаще всего", "option1": "иллюстрации", "option2": "тезисы", "option3": "выводы", "option4": "введение", "option5": "методы", "correct": "1", "active": "TRUE"}, {"id": 34, "question": "Студенческий реферат и курсовая работа являются особыми жанрами стиля", "option1": "учебного", "option2": "научного", "option3": "делового", "option4": "информационного", "option5": "дипломатического", "correct": "1", "active": "TRUE"}, {"id": 35, "question": "Типы конспектов — ...", "option1": "плановые", "option2": "текстуальные", "option3": "свободные", "option4": "тематические", "option5": "а, б, в, г вместе", "correct": "1", "active": "TRUE"}, {"id": 36, "question": "Учебник и учебное пособие являются основными жанрами подстиля", "option1": "научно-учебного", "option2": "делового", "option3": "научно-популярного", "option4": "масс-медийного", "option5": "художественного", "correct": "1", "active": "TRUE"}, {"id": 37, "question": "Ядро научного стиля, вокруг которого группируются другие подстили, составляет подстиль", "option1": "академический", "option2": "художественный", "option3": "масс-медийный", "option4": "деловой", "option5": "духовный", "correct": "1", "active": "TRUE"}, {"id": 38, "question": "Наука - это...", "option1": "выработка и теоретическая систематизация объективных знаний", "option2": "учения о принципах построения научного познания", "option3": "учения о формах построения научного познания", "option4": "стратегия достижения цели", "option5": "опыт", "correct": "1", "active": "TRUE"}, {"id": 39, "question": "Научное исследование это...", "option1": "целенаправленное познание", "option2": "выработка общей стратегии науки", "option3": "система методов, функционирующих в конкретной науке", "option4": "учение, позволяющее критически осмыслить методы познания", "option5": "средство для проведения исследования", "correct": "1", "active": "TRUE"}, {"id": 40, "question": "Методология науки - это...", "option1": "система методов, функционирующих в конкретной науке", "option2": "целенаправленное познание", "option3": "воспроизведение новых знаний", "option4": "учение о принципах построения научного познания", "option5": "совокупность методов, методических приемов и средств", "correct": "1", "active": "TRUE"}, {"id": 41, "question": "Теория - это...", "option1": "логическое обобщение опыта в той или иной отрасли знаний", "option2": "выработка общей стратегии науки", "option3": "целенаправленное познание", "option4": "система методов, функционирующих в конкретной науке", "option5": "совокупность целей и задач исследований", "correct": "1", "active": "TRUE"}, {"id": 42, "question": "Основу методологии научного исследования составляет:", "option1": "диагностический метод", "option2": "общий метод", "option3": "обобщение общественной практики", "option4": "совокупность правил какого-либо искусства", "option5": "совокупность правил определенной науки", "correct": "1", "active": "TRUE"}, {"id": 43, "question": "Семиотика - это...", "option1": "наличие\tинформации,\tкоторая должна\tиспользоваться\tпри\tобучении конкретной дисциплине", "option2": "воспроизведение новых знаний", "option3": "учение о формах построения научного познания", "option4": "стратегия достижения цели", "option5": "план проведения научного исследования", "correct": "1", "active": "TRUE"}, {"id": 44, "question": "План-проспект -", "option1": "это документ об основных положениях содержания будущей работы (учебника, диссертации), принципах раскрытия темы, построении, соотношении объемов частей", "option2": "научный документ", "option3": "это документ об основных положениях содержания будущей работы", "option4": "это документ о принципах раскрытия темы", "option5": "конспект научной работы", "correct": "1", "active": "TRUE"}, {"id": 45, "question": "Аннотация ―", "option1": "это краткая характеристика содержания, целевого назначения издания, его читательского адреса, формы.", "option2": "это краткая характеристика содержания", "option3": "это документ об основных положениях содержания будущей работы (учебника, диссертации).", "option4": "научный документ", "option5": "рецензия на статью", "correct": "1", "active": "TRUE"}, {"id": 46, "question": "Приложения представляют собой часть текста,", "option1": "имеющую дополнительное значение, но необходимую для более полного освещения темы: размещаются в конце издания.", "option2": "размещаются в начале издания.", "option3": "размечаются в конце каждой главы.", "option4": "имеющую основное значение.", "option5": "это содержание основного текста в виде таблиц", "correct": "1", "active": "TRUE"}, {"id": 47, "question": "Предметный указатель содержит", "option1": "перечень основных тематических объектов (предметов), обсуждаемых или упоминаемых в тексте научного, методического или справочного издания", "option2": "перечень авторов", "option3": "список основных тематических объектов", "option4": "список авторов", "option5": "список литературных источников", "correct": "1", "active": "TRUE"}, {"id": 48, "question": "Для научного текста характерны", "option1": "смысловая законченность, целостность и связность, здесь доминируют рассуждения, цель которых - доказательство истин, выявленных в результате исследования", "option2": "целостность и связность", "option3": "краткость", "option4": "смысловая законченность", "option5": "наличие жаргонизмов", "correct": "1", "active": "TRUE"}, {"id": 49, "question": "В научной работе речь чаще всего ведется", "option1": "от третьего лица (\"автор полагает\"), редко употребляется форма первого и совсем не употребляется форма второго лица местоимений единственного числа", "option2": "первого лица", "option3": "от нейтрального лица", "option4": "второго лица единственного числа", "option5": "ответы б) и г) вместе", "correct": "1", "active": "TRUE"}, {"id": 50, "question": "Автор диссертации выступает", "option1": "во множественном числе и вместо \"я\" употребляет \"мы\", стремясь отразить свое мнение как мнение научной школы, научного направления", "option2": "от нейтрального лица", "option3": "в единственном лице", "option4": "во втором лице единственного числа", "option5": "ответы б) и г) вместе", "correct": "1", "active": "TRUE"}, {"id": 51, "question": "Важное качество для автора научного текста", "option1": "ясность, умение писать доступно и доходчиво.", "option2": "умение писать каллиграфически", "option3": "умение писать левой рукой.", "option4": "ясность.", "option5": "документальность", "correct": "1", "active": "TRUE"}, {"id": 52, "question": "Необходимое требование к написанию научной работы ―", "option1": "умение объемно отражать детали и мелкие подробности", "option2": "умение использовать повторы.", "option3": "краткость, умение избегать повторов, излишней детализации, употребления лишних слов, без надобности ― иностранных слов.", "option4": "умение максимально использовать цитирования из других источников.", "option5": "художественный замысел", "correct": "1", "active": "TRUE"}, {"id": 53, "question": "Итоговая работа для бакалавра ―", "option1": "это выпускная квалификационная работа.", "option2": "это учебная  работа.", "option3": "это научный труд.", "option4": "это методический труд.", "option5": "это диссертация", "correct": "1", "active": "TRUE"}, {"id": 54, "question": "Выпускная квалификационная работа для магистра", "option1": "это магистерская диссертация.", "option2": "это научный труд.", "option3": "это методический труд.", "option4": "это дипломная работа.", "option5": "монография", "correct": "1", "active": "TRUE"}, {"id": 55, "question": "Текстовые выделения ―", "option1": "это буквы, знаки, слова, предложения, набранные иначе, чем основной массив текста: шрифт иной насыщенности и т. д.", "option2": "это знаки, слова, предложения с новой строки", "option3": "это знаки препинания.", "option4": "это буквы латинского алфавита.", "option5": "это цифры", "correct": "1", "active": "TRUE"}, {"id": 56, "question": "Цитируемый текст должен точно соответствовать", "option1": "источнику с обязательной ссылкой на него и соблюдением требований библиографических стандартов.", "option2": "задачам методической работы.", "option3": "задачам научной работы.", "option4": "содержанию научной работы", "option5": "плану научной работы", "correct": "1", "active": "TRUE"}, {"id": 57, "question": "Таблица ―", "option1": "организованный в вертикальные колонки (графы) и горизонтальные строки словесно-цифровой материал, образующий своеобразную сетку, каждый элемент которой ― составная часть и графы, и строки", "option2": "часть научного труда.", "option3": "метод изложения научного материала.", "option4": "методика изложения методического материала.", "option5": "принцип наглядности", "correct": "1", "active": "TRUE"}, {"id": 58, "question": "Каким должен быть иллюстративный материал в научных и методических изданиях,", "option1": "он должен быть органически связан с текстом и помогать читателю лучше воспринимать суть содержания книги.", "option2": "он должен быть максимально привлекательным и художественно оформлен с использованием разных цветов фона.", "option3": "он должен быть обширным и глубоким", "option4": "он должен отсутствовать в научном тексте.", "option5": "ответы б) и в) вместе", "correct": "1", "active": "TRUE"}, {"id": 59, "question": "График (от греч. graphikos ― начертанный)", "option1": "чертеж, применяемый для наглядного геометрического изображения количественной зависимости различного рода явлений", "option2": "это разноцветный чертеж.", "option3": "это геометрическое изображение основного текста.", "option4": "это часть научного труда.", "option5": "это вводная часть диссертации", "correct": "1", "active": "TRUE"}, {"id": 60, "question": "Диаграмма (от гр. diagramma ― рисунок, чертеж)", "option1": "чертеж,\tнаглядно \tпоказывающий соотношение\tмежду\tразличными величинами, графическое изображение их зависимости.", "option2": "это основная часть научного труда.", "option3": "это чертеж плана научной работы", "option4": "это графическое изображение выводов", "option5": "ответы в) и г) вместе.", "correct": "1", "active": "TRUE"}, {"id": 61, "question": "Схема ―", "option1": "это иллюстрация, с помощью условных графических средств и обозначений передающая устройство, взаимоотношение (связи) частей, структуру какого-либо объекта.", "option2": "это чертеж, отражающий план научной работы.", "option3": "это вводная часть научного труда.", "option4": "это иллюстрация цитирования.", "option5": "это план-конспект", "correct": "1", "active": "TRUE"}, {"id": 62, "question": "Библиографическое описание", "option1": "сведения о произведении печати или другом документе, которые дают возможность получить представление о его содержании, читательском назначении, объеме и т. п.", "option2": "это заключительная часть научного труда.", "option3": "это краткое представление о содержании научного труда.", "option4": "это сведения об авторах.", "option5": "это аннотация", "correct": "1", "active": "TRUE"}, {"id": 63, "question": "Библиографический список содержит", "option1": "библиографическое описание использованных и (или) рекомендованных источников и помещается в работе после заключения.", "option2": "практические рекомендации", "option3": "аннотированное описание.", "option4": "методические замечания.", "option5": "список авторов научной работы", "correct": "1", "active": "TRUE"}, {"id": 64, "question": "В дипломных работах в библиографический список включаются", "option1": "только те источники, на которые имеются ссылки в основном тексте.", "option2": "любые источники по теме научной работы", "option3": "публикации автора диссертации.", "option4": "только публикации авторитетных авторов.", "option5": "только публикации научного руководителя.", "correct": "1", "active": "TRUE"}, {"id": 65, "question": "Подпись к иллюстрации:", "option1": "это текст под иллюстрацией,", "option2": "это краткое резюме.", "option3": "это часть научного труда.", "option4": "это аннотация.", "option5": "роспись автора", "correct": "1", "active": "TRUE"}, {"id": 66, "question": "Выделения в тексте служат для того,", "option1": "чтобы разграничить части и элементы текста по значимости, структуре или передать дополнительный смысл без помощи слов.", "option2": "чтобы обратили внимание на проблемные вопросы научной работы. N P î \" ^ p r ˜ ª ¬ î ^ ˜ Ú ¬ Ú ì î 萎￩萏Ĝ萑ȷ葝￩葞Ĝ葠ȷ摧箼ᜀ.␃ഃ׆Āѣ฀࿿ᲄᄁ 㞄崂廿ᲄ态㞄愂̤摧箼က$萎￩萏Ĝ萑ȷ葝￩葞Ĝ葠ȷ 摧箼ༀэстетического восприятия.", "option3": "чтобы улучшить качество работы.", "option4": "для облегчения конспектирования текста", "option5": "", "correct": "1", "active": "TRUE"}, {"id": 67, "question": "Основной структурный элемент предметного указателя ―", "option1": "предметная рубрика, представляющая собой условное словосочетание, позволяющее идентифицировать определенный отрезок текста.", "option2": "заключение.", "option3": "терминологический словарь.", "option4": "список авторов.", "option5": "библиографический список", "correct": "1", "active": "TRUE"}, {"id": 68, "question": "Произведения защищены авторским правом", "option1": "которое является собственностью автора", "option2": "которое является частью гражданского законодательства, регулирующего отношения по использованию произведений науки, литературы и искусства", "option3": "которое зачищено законом", "option4": "которое не облагается налогом", "option5": "которое имеет спрос у читателей", "correct": "1", "active": "TRUE"}, {"id": 69, "question": "Использование произведений осуществляется главным образом", "option1": "путем опубликования, для научных и методических произведений это издание книг, брошюр, монографий, учебников и учебных пособий, статей в журналах и т.д.", "option2": "изданием учебников", "option3": "изданием книг.", "option4": "изданием пособий и журналов", "option5": "для изучения", "correct": "1", "active": "TRUE"}, {"id": 70, "question": "Соавторство", "option1": "это создание произведения совместным творческим трудом двух и более лиц (соавторов)", "option2": "совместная деятельность", "option3": "совместное творчество", "option4": "совместная работа", "option5": "общая тема исследования", "correct": "1", "active": "TRUE"}, {"id": 71, "question": "Рецензия (от лат. recensio - рассмотрение, обследование)", "option1": "критический разбор и оценка, отзыв на рукописи произведений перед их публикацией или после выхода их в свет, перед защитой диссертации", "option2": "выводы", "option3": "обобщение", "option4": "заключение", "option5": "аннотация", "correct": "1", "active": "TRUE"}, {"id": 72, "question": "Фундаментальные исследования направлены", "option1": "на создание теории обучения и воспитания, теории содержания образования, теории методов и организационных форм обучения и воспитания.", "option2": "на разработку практических рекомендаций", "option3": "на обобщение научных результатов", "option4": "на создание теории обучения и воспитания", "option5": "на создание  научной гипотезы", "correct": "1", "active": "TRUE"}, {"id": 73, "question": "Прикладные исследования решают вопросы", "option1": "связанные с практикой, их назначение - давать научные средства для решения этих вопросов", "option2": "связанные с научными открытиями.", "option3": "связанные с научными исследованиями", "option4": "связанные с теорией", "option5": "связанные с решением неотложных задач", "correct": "1", "active": "TRUE"}, {"id": 74, "question": "Разработки содержат", "option1": "конечные результаты исследований в такой форме, в которой они могут непосредственно применяться на практике", "option2": "выводы", "option3": "практические рекомендации", "option4": "теоретические обобщения.", "option5": "обобщенные гипотезы", "correct": "1", "active": "TRUE"}, {"id": 75, "question": "Стихийно-эмпирическое знание", "option1": "первично, существует давно и актуально сейчас. В нем получение знаний не отделено от практической деятельности людей, практических действий с объектом.", "option2": "содержит теоретические вопросы", "option3": "вторично", "option4": "нейтрально", "option5": "содержат практические рекомендации", "correct": "1", "active": "TRUE"}, {"id": 76, "question": "Научное познание отличается тем, что познавательную деятельность", "option1": "в науке осуществляют не все, а специально подготовленные люди - научные работники, ученые в форме научных исследований с применением специальных средств познания и методов исследования", "option2": "в науке осуществляют не все, а практики", "option3": "в науке осуществляют не все, а студенты", "option4": "в науке осуществляют не все, а аспиранты и докторанты", "option5": "в науке осуществляют не все, а выборочные по конкурсу кандидатуры", "correct": "1", "active": "TRUE"}, {"id": 77, "question": "Проблема указывает", "option1": "на неизвестное и побуждает к его познанию, обеспечивает целенаправленную мобилизацию прежних и организацию получения новых, добываемых в ходе исследования знаний", "option2": "на необходимость ее преодоления в процессе научной деятельности", "option3": "на неизвестное.", "option4": "на определенные трудности в научной работе", "option5": "на отсутствие решения", "correct": "1", "active": "TRUE"}, {"id": 78, "question": "Обоснование проблемы", "option1": "предполагает поиск аргументов в пользу ее решения, значимости ожидаемых результатов, сравнение с другими исследованиями.", "option2": "предполагает поиск методов.", "option3": "предполагает поиск аргументов в пользу ее решения", "option4": "связано с научной деятельностью.", "option5": "отсутствие результатов", "correct": "1", "active": "TRUE"}, {"id": 79, "question": "В формулировке темы", "option1": "должны просматриваться актуальность и то новое, что заключено в содержании, результатах и выводах", "option2": "должна просматриваться актуальность", "option3": "должна просматриваться научная новизна", "option4": "должна просматриваться практическая значимость", "option5": "должно быть обоснование проблемы", "correct": "1", "active": "TRUE"}, {"id": 80, "question": "Объект исследования –", "option1": "это явление или процесс, избранный для изучения", "option2": "это процесс, избранный для изучения.", "option3": "это явление", "option4": "это явление, избранный для изучения.", "option5": "это  проблемный вопрос", "correct": "1", "active": "TRUE"}, {"id": 81, "question": "Предмет исследования -", "option1": "это то, что находится в границах объекта", "option2": "это явление окружающей действительности", "option3": "это научное определение.", "option4": "это то, на что направлено исследование", "option5": "это научный взгляд на проблему", "correct": "1", "active": "TRUE"}, {"id": 82, "question": "Неправильный выбор объекта или предмета исследования", "option1": "может привести к ошибкам теоретического и практического характера", "option2": "может привести к неправильным выводам", "option3": "может привести к практическим ошибкам.", "option4": "может привести к теоретическим ошибкам", "option5": "приводит к отсутствию результата", "correct": "1", "active": "TRUE"}, {"id": 83, "question": "Цель исследования -", "option1": "представление о результате, то, что должно быть достигнуто в итоге работы", "option2": "конечный результат", "option3": "направление научной работы", "option4": "улучшение здоровья населения", "option5": "в исследовательской деятельности", "correct": "1", "active": "TRUE"}, {"id": 84, "question": "Цель и задачи исследования", "option1": "позволяют определить логику, основные шаги, ведущие к разрешению проблемы и достижению результатов работы", "option2": "улучшение здоровья населения", "option3": "позволяют определить основные шаги работы", "option4": "позволяют определить логику работы", "option5": "являются главой научной работы", "correct": "1", "active": "TRUE"}, {"id": 85, "question": "Гипотеза (от гр. hipothesis - основание, предположение) это", "option1": "научное предположение, требующее проверки на опыте и теоретического обоснования, подтверждения", "option2": "теоретическое заключение", "option3": "научное решение", "option4": "практическое обобщение", "option5": "введение", "correct": "1", "active": "TRUE"}, {"id": 86, "question": "При завершении научной и методической работы подводят итоги и определяют главное:", "option1": "какое новое знание получено и каково его значение для науки и практики", "option2": "выводы.", "option3": "заключение", "option4": "какое новое знание получено", "option5": "список использованных источников", "correct": "1", "active": "TRUE"}, {"id": 87, "question": "Соискателю предоставляется время для изложения основных положений его диссертации", "option1": "обычно в пределах 20 мин", "option2": "обычно в пределах 8 мин", "option3": "обычно в пределах 10 мин", "option4": "обычно в пределах 40 мин", "option5": "обычно в пределах 50 мин", "correct": "1", "active": "TRUE"}, {"id": 88, "question": "Процедура защиты дипломных работ завершается", "option1": "выставлением оценки.", "option2": "выводами", "option3": "голосованием.", "option4": "подведением итогов.", "option5": "аппеляцией", "correct": "1", "active": "TRUE"}, {"id": 89, "question": "В вузе одной из обязательных форм обучения является", "option1": "практика", "option2": "полевые занятия", "option3": "практические занятия", "option4": "лабораторные занятия", "option5": "стажировка", "correct": "1", "active": "TRUE"}, {"id": 90, "question": "Научные издания:", "option1": "монографии, статьи в периодических центральных изданиях; сборники научных трудов, материалов научных конгрессов, научно-практических конференций; научно-популярные книги", "option2": "монографии, статьи в периодических центральных изданиях", "option3": "сборники научных трудов, материалов научных конгрессов", "option4": "научно-практических конференций; научно-популярные книги", "option5": "энциклопедии", "correct": "1", "active": "TRUE"}, {"id": 91, "question": "Акты внедрения:", "option1": "свидетельство эффективности применения результатов исследования в практике, которое выдается после апробации в соответствующей организации результатов НИР", "option2": "апробация научных результатов в практику.", "option3": "документ, который выдается после апробации в соответствующей организации результатов НИР.", "option4": "выдается после апробации в соответствующей организации результатов НИР", "option5": "это результат научной работы", "correct": "1", "active": "TRUE"}, {"id": 92, "question": "Значение научной работы для науки и практики определяется на начальном этапе работы", "option1": "как основание для проведения исследования (проблема, тема, актуальность)", "option2": "как основание для обоснования эффективности", "option3": "как основание для выбора темы", "option4": "как основание для выбора проблемы", "option5": "как основание для определения задач", "correct": "1", "active": "TRUE"}, {"id": 93, "question": "При оценке новизны используются следующие характеристики:", "option1": "вид результата; уровень новизны результата; содержательное изложение (описание) результата", "option2": "вид результата", "option3": "уровень новизны результата.", "option4": "содержательное изложение (описание) результата", "option5": "обсуждение", "correct": "1", "active": "TRUE"}, {"id": 94, "question": "Обоснованное представление об общих результатах исследования:", "option1": "Задачи исследования", "option2": "Цель исследования", "option3": "Гипотеза исследования", "option4": "Тема исследования", "option5": "обзор литературы", "correct": "1", "active": "TRUE"}, {"id": 95, "question": "Не входит в общий объем исследовательской работы:", "option1": "приложение", "option2": "титульный лист", "option3": "введение", "option4": "содержание", "option5": "иллюстрации и таблицы", "correct": "1", "active": "TRUE"}, {"id": 96, "question": "Познание - это:", "option1": "способность воспринимать, различать и усваивать явления внешнего мира", "option2": "способность человека рассуждать, представляющая собою процесс отражения объективной действительности в представлениях, суждениях, понятиях", "option3": "исторический процесс целенаправленного активного отображения (соискания, накопления и систематизации), формирующий у людей знания", "option4": "степень сознательности, просвещённости, культурности", "option5": "особенности восприятия проблемы", "correct": "1", "active": "TRUE"}, {"id": 97, "question": "Логика- это:", "option1": "наука о сущности познания", "option2": "наука о противоречии познания", "option3": "учение о бытии", "option4": "учение о познании", "option5": "наука о жизни", "correct": "1", "active": "TRUE"}, {"id": 98, "question": "Гносеология - это:", "option1": "учение о познании", "option2": "учение о бытии", "option3": "учение о душе", "option4": "учение о боге.", "option5": "учение о космосе", "correct": "1", "active": "TRUE"}, {"id": 99, "question": "Умышленно совершаемое физическим лицом незаконное использование или распоряжение охраняемыми результатами чужого творческого труда, которое сопровождается доведением до других лиц ложных сведений о себе как о действительном авторе.", "option1": "плагиат", "option2": "авторское право", "option3": "диссертация", "option4": "автореферат", "option5": "авторская ссылка", "correct": "1", "active": "TRUE"}, {"id": 100, "question": "Институт гражданского права, регулирующий правоотношения, связанные с созданием и использованием произведений науки, литературы или искусства, то есть объективных результатов творческой деятельности людей в этих областях", "option1": "авторское право", "option2": "плагиат", "option3": "институт интеллектуальной собственности", "option4": "патент", "option5": "авторская ссылка", "correct": "1", "active": "TRUE"}, {"id": 101, "question": "Процедура рассмотрения научных статей и монографий учёными-специалистами в той же области", "option1": "рецензирование", "option2": "реферирование", "option3": "аннотация", "option4": "отзыв", "option5": "ответы б) и г) вместе", "correct": "1", "active": "TRUE"}, {"id": 102, "question": "Система регулятивных принципов, приёмов и способов, с помощью которых достигается объективное познание действительности в рамках научно-познавательной деятельности", "option1": "научный метод", "option2": "научный способ", "option3": "научный принцип", "option4": "научный подход", "option5": "научный прием", "correct": "1", "active": "TRUE"}, {"id": 103, "question": "Эмпирические исследования – это:", "option1": "ответы б), в), г) и д) вместе", "option2": "наблюдение и исследование конкретных явлений,", "option3": "эксперименты,", "option4": "обобщение, классификация результатов исследования", "option5": "описание результатов исследования эксперимента, внедрение их в практическую деятельность человека", "correct": "1", "active": "TRUE"}, {"id": 104, "question": "Литературный жанр, прозаическое сочинение небольшого объёма, свободной композиции, подразумевающее впечатления и соображения автора по конкретному поводу или предмету.", "option1": "эссе", "option2": "рассказ", "option3": "доклад", "option4": "реферат", "option5": "статья", "correct": "1", "active": "TRUE"}, {"id": 105, "question": "Исследования, при которых приобретение важных данных об исследуемых явлениях и объектах, обеспечивается путем индуктивных и дедуктивных умозаключений на основании мыслительных операций", "option1": "теоретические исследования", "option2": "эмпирические исследования", "option3": "эксперименты", "option4": "обобщение, классификация результатов исследования", "option5": "описание результатов исследования эксперимента, внедрение их в практическую деятельность человека", "correct": "1", "active": "TRUE"}, {"id": 106, "question": "Безвозмездная субсидия предприятиям, организациям и физическим лицам в денежной или натуральной форме на проведение научных или других исследований, опытно-конструкторских работ и другие цели с последующим отчётом об их использовании", "option1": "Грант", "option2": "премия", "option3": "награда", "option4": "беспроцентная ссуда", "option5": "кредит", "correct": "1", "active": "TRUE"}, {"id": 107, "question": "Начальная часть или глава произведения, в которой чаще всего определяются исходные понятия, основные термины, обозреваются теории, литературные и документальные источники, обосновывается постановка и разработка темы.", "option1": "Введение", "option2": "выводы", "option3": "заключение", "option4": "результаты", "option5": "обсуждение", "correct": "1", "active": "TRUE"}, {"id": 108, "question": "Заключение, сформулированное по итогам исследования\t - это:", "option1": "выводы", "option2": "введение", "option3": "приложение", "option4": "результаты", "option5": "обсуждение", "correct": "1", "active": "TRUE"}, {"id": 109, "question": "Часть введения, отражающая степень важности исследования в данной ситуации и данный отрезок времени для решения данных задач, вопросов и проблем -", "option1": "Актуальность темы", "option2": "проблема исследования", "option3": "цели и задачи исследования", "option4": "материалы и методы", "option5": "выводы", "correct": "1", "active": "TRUE"}, {"id": 110, "question": "Содержание, выстроенное логично по следующим разделам: введение, обзор литературы, основная часть (теоретический / экспериментальный раздел, аналитический / практический раздел), заключение / выводы - …", "option1": "план научного произведения", "option2": "основная часть научной работы", "option3": "содержание диссертации с указанием страниц", "option4": "перспективный план научной работы", "option5": "стратегический план научной работы", "correct": "1", "active": "TRUE"}, {"id": 111, "question": "В какой части дипломной работы размещается обзор литературы?", "option1": "после введения,", "option2": "после основной части", "option3": "перед выводами", "option4": "в приложении", "option5": "в разделе «Список использованных источников»", "correct": "1", "active": "TRUE"}, {"id": 112, "question": "Набор слов, отражающих содержание текста в терминах объекта, научной отрасли и методов исследования - …", "option1": "ключевые слова", "option2": "терминологический словарь", "option3": "предметный указатель", "option4": "обозначения и сокращения", "option5": "определения", "correct": "1", "active": "TRUE"}, {"id": 113, "question": "Рекомендуемое количество ключевых слов статьи – …", "option1": "5-7", "option2": "15-20", "option3": "2-3", "option4": "120", "option5": "не менее 60", "correct": "1", "active": "TRUE"}, {"id": 114, "question": "Оглавление и содержание ―", "option1": "обязательные элементы справочного аппарата научных и методических работ", "option2": "разделы научной работы.", "option3": "разделы книги.", "option4": "разделы методической работы.", "option5": "составные части титульного листа", "correct": "1", "active": "TRUE"}, {"id": 115, "question": "Резюме (от франц. resumer ― излагать вкратце) –", "option1": "это краткое, в виде выводов, изложение содержания работы, чаще всего статьи, доклада", "option2": "это заключение", "option3": "это практические рекомендации.", "option4": "это выводы.", "option5": "это аннотация на статью", "correct": "1", "active": "TRUE"}, {"id": 116, "question": "Какой метод исследования представляет собой процесс планомерного изучения какого-нибудь явления независимо от того, как он осуществляется  с последующей регистрацией результатов в соответствующих документах учета?", "option1": "наблюдение", "option2": "сравнение;", "option3": "анализ;", "option4": "синтез;", "option5": "классификация.", "correct": "1", "active": "TRUE"}, {"id": 117, "question": ". Как называется упорядоченный ряд распределения, в котором указана повторяемость вариант, принадлежащих к данной совокупности?", "option1": "вариационный ряд;", "option2": "весы вариант;", "option3": "частоты вариант;", "option4": "объем вариант;", "option5": "все ответы верны.", "correct": "1", "active": "TRUE"}, {"id": 118, "question": "Абзац представляет собой", "option1": "отступ вправо в начале первой строки каждой части текста", "option2": "отступ влево в начале первой строки каждой части текста", "option3": "отступ вверху.", "option4": "отступ внизу.", "option5": "начало каждой главы", "correct": "1", "active": "TRUE"}, {"id": 119, "question": "Какие биологические признаки относятся к количественным?", "option1": "длина колосьев, число зерен в колосе;", "option2": "цвет радужной оболочки глаз;", "option3": "состояние здоровья населения;", "option4": "запах цветов;", "option5": "вкус и прозрачность воды.", "correct": "1", "active": "TRUE"}, {"id": 120, "question": "Важное качество для автора научного текста ―", "option1": "ясность, умение писать доступно и доходчиво.", "option2": "умение писать каллиграфически", "option3": "умение писать левой рукой.", "option4": "ясность.", "option5": "документальность", "correct": "1", "active": "TRUE"}];
+const QUESTIONS_DB = [{"id": 1, "question": "Авторские рассуждения на", "option1": "эссе", "option2": "монография", "option3": "диссертация", "option4": "автореферат", "option5": "статья", "correct": "1", "active": "TRUE"}, {"id": 2, "question": "Важнейшее отличие диссертации от", "option1": "форма существования: монография", "option2": "нет отличий", "option3": "диссертация – это научный труд, а", "option4": "диссертация – это художественное", "option5": "монография – это краткое", "correct": "1", "active": "TRUE"}, {"id": 3, "question": "Для сферы научной информации", "option1": "реферат, аннотация и рецензия", "option2": "заявление, приказ,", "option3": "удостоверение, паспорт", "option4": "журнал, книга", "option5": "роман, эссе", "correct": "1", "active": "TRUE"}, {"id": 4, "question": "Доводы, используемые автором для", "option1": "аргументы", "option2": "причины", "option3": "следствия", "option4": "анализ", "option5": "синтез", "correct": "1", "active": "TRUE"}, {"id": 5, "question": "Заключение следует после", "option1": "основной части", "option2": "введения", "option3": "актуальности", "option4": "материалов и методов", "option5": "аннотации", "correct": "1", "active": "TRUE"}, {"id": 6, "question": "Заключительный этап создания", "option1": "оформление", "option2": "написание основной части", "option3": "написание выводов", "option4": "написание актуальности", "option5": "написание введения", "correct": "1", "active": "TRUE"}, {"id": 7, "question": "Из перечисленного, частями", "option1": "введение", "option2": "заключение", "option3": "основная часть", "option4": "а), б) и в) вместе", "option5": "вступление, результаты", "correct": "1", "active": "TRUE"}, {"id": 8, "question": "Иллюстративный материал, который", "option1": "графиком", "option2": "таблицей", "option3": "компакт-диском", "option4": "иллюстрацией", "option5": "наглядностью", "correct": "1", "active": "TRUE"}, {"id": 9, "question": "К видам академического письма не", "option1": "язык средств массовой информации", "option2": "лекция", "option3": "монография", "option4": "диссертация", "option5": "доклад", "correct": "1", "active": "TRUE"}, {"id": 10, "question": "К видам академического письма", "option1": "лекция", "option2": "статья из новостной газеты", "option3": "роман", "option4": "повесть", "option5": "рассказ", "correct": "1", "active": "TRUE"}, {"id": 11, "question": "Книгой, помогающей адресату", "option1": "учебник", "option2": "путеводитель", "option3": "монография", "option4": "статья", "option5": "доклад", "correct": "1", "active": "TRUE"}, {"id": 12, "question": "Краткое устное или письменное", "option1": "реферат", "option2": "доклад", "option3": "рукопись", "option4": "диссертация", "option5": "статья", "correct": "1", "active": "TRUE"}, {"id": 13, "question": "Материалы, не являющиеся", "option1": "в приложения", "option2": "в введение", "option3": "в заключение", "option4": "в выводы", "option5": "в основной части", "correct": "1", "active": "TRUE"}, {"id": 14, "question": "Освоить какой-либо фрагмент", "option1": "учебное пособие", "option2": "статья", "option3": "монография", "option4": "диссертация", "option5": "доклад", "correct": "1", "active": "TRUE"}, {"id": 15, "question": "Основной формой речи научного", "option1": "письменная", "option2": "устная", "option3": "диалоговая", "option4": "интервью", "option5": "в) и г) вместе", "correct": "1", "active": "TRUE"}, {"id": 16, "question": "Основную содержательную", "option1": "термины", "option2": "аббревиатуры", "option3": "переводчик", "option4": "понятия", "option5": "СМИ", "correct": "1", "active": "TRUE"}, {"id": 17, "question": "Основные положения книги, статьи", "option1": "тезисы", "option2": "эссе", "option3": "план", "option4": "содержание", "option5": "вступление", "correct": "1", "active": "TRUE"}, {"id": 18, "question": "Особым образом организованный", "option1": "таблица", "option2": "реферат", "option3": "конспект", "option4": "выводы", "option5": "заключение", "correct": "1", "active": "TRUE"}, {"id": 19, "question": "Первая страница научной работы —", "option1": "титульный лист", "option2": "введение", "option3": "«шапка»", "option4": "ФИО автора", "option5": "эпиграф", "correct": "1", "active": "TRUE"}, {"id": 20, "question": "Простейшей рубрикой является:", "option1": "абзац", "option2": "план", "option3": "содержание", "option4": "титульный лист", "option5": "реферат", "correct": "1", "active": "TRUE"}, {"id": 21, "question": "Развернутую информацию о", "option1": "реферат", "option2": "монография", "option3": "монолог", "option4": "отчет", "option5": "статья", "correct": "1", "active": "TRUE"}, {"id": 22, "question": "Краткое устное или письменное", "option1": "Реферат", "option2": "монография", "option3": "монолог", "option4": "отчет", "option5": "статья", "correct": "1", "active": "TRUE"}, {"id": 23, "question": "Род речи, помогающий", "option1": "академическое", "option2": "дипломатическое", "option3": "национальное", "option4": "деловое", "option5": "духовное", "correct": "1", "active": "TRUE"}, {"id": 24, "question": "Рубрикация текста — это:", "option1": "деление текста на составные части", "option2": "составление плана", "option3": "написание введения", "option4": "создание таблиц", "option5": "презентация", "correct": "1", "active": "TRUE"}, {"id": 25, "question": "Систематическая, логическая", "option1": "конспект", "option2": "доклад", "option3": "статья", "option4": "эссе", "option5": "диссертация", "correct": "1", "active": "TRUE"}, {"id": 26, "question": "Системная организация, наличие", "option1": "термина", "option2": "понятия", "option3": "аббревиатуры", "option4": "делового языка", "option5": "реферата", "correct": "1", "active": "TRUE"}, {"id": 27, "question": "Словесное, устное или письменное", "option1": "текст", "option2": "диссертация", "option3": "монография", "option4": "реферат", "option5": "статья", "correct": "1", "active": "TRUE"}, {"id": 28, "question": "Слово или словосочетание,", "option1": "термин", "option2": "аббревиатура", "option3": "понятие", "option4": "профессионализмы", "option5": "жаргонизмы", "correct": "1", "active": "TRUE"}, {"id": 29, "question": "Смысловым ядром специального", "option1": "термин", "option2": "аббревиатура", "option3": "морфемы", "option4": "профессионализмы", "option5": "жаргонизмы", "correct": "1", "active": "TRUE"}, {"id": 30, "question": "Со сферой научных исследований,", "option1": "академический", "option2": "технический", "option3": "терминологический", "option4": "учебный", "option5": "образовательный", "correct": "1", "active": "TRUE"}, {"id": 31, "question": "Совокупность специальных слов", "option1": "терминология", "option2": "тавтология", "option3": "словарь", "option4": "условные обозначения", "option5": "диаграмма", "correct": "1", "active": "TRUE"}, {"id": 32, "question": "Совокупность специальных", "option1": "номенклатурные понятия", "option2": "словарь", "option3": "термины", "option4": "профессионализмы", "option5": "жаргонизмы", "correct": "1", "active": "TRUE"}, {"id": 33, "question": "Соотносимы с описаниями и", "option1": "иллюстрации", "option2": "тезисы", "option3": "выводы", "option4": "введение", "option5": "методы", "correct": "1", "active": "TRUE"}, {"id": 34, "question": "Студенческий реферат и курсовая", "option1": "учебного", "option2": "научного", "option3": "делового", "option4": "информационного", "option5": "дипломатического", "correct": "1", "active": "TRUE"}, {"id": 35, "question": "Типы конспектов — ...", "option1": "плановые", "option2": "текстуальные", "option3": "свободные", "option4": "тематические", "option5": "а, б, в, г вместе", "correct": "1", "active": "TRUE"}, {"id": 36, "question": "Учебник и учебное пособие", "option1": "научно-учебного", "option2": "делового", "option3": "научно-популярного", "option4": "масс-медийного", "option5": "художественного", "correct": "1", "active": "TRUE"}, {"id": 37, "question": "Ядро научного стиля, вокруг", "option1": "академический", "option2": "художественный", "option3": "масс-медийный", "option4": "деловой", "option5": "духовный", "correct": "1", "active": "TRUE"}, {"id": 38, "question": "Наука - это...", "option1": "выработка и теоретическая", "option2": "учения о принципах построения", "option3": "учения о формах построения", "option4": "стратегия достижения цели", "option5": "опыт", "correct": "1", "active": "TRUE"}, {"id": 39, "question": "Научное исследование это...", "option1": "целенаправленное познание", "option2": "выработка общей стратегии науки", "option3": "система методов, функционирующих", "option4": "учение, позволяющее критически", "option5": "средство для проведения", "correct": "1", "active": "TRUE"}, {"id": 40, "question": "Методология науки - это...", "option1": "система методов, функционирующих", "option2": "целенаправленное познание", "option3": "воспроизведение новых знаний", "option4": "учение о принципах построения", "option5": "совокупность методов,", "correct": "1", "active": "TRUE"}, {"id": 41, "question": "Теория - это...", "option1": "логическое обобщение опыта в той", "option2": "выработка общей стратегии науки", "option3": "целенаправленное познание", "option4": "система методов, функционирующих", "option5": "совокупность целей и задач", "correct": "1", "active": "TRUE"}, {"id": 42, "question": "Основу методологии научного", "option1": "диагностический метод", "option2": "общий метод", "option3": "обобщение общественной практики", "option4": "совокупность правил какого-либо", "option5": "совокупность правил определенной", "correct": "1", "active": "TRUE"}, {"id": 43, "question": "Семиотика - это...", "option1": "наличие\tинформации,\tкоторая", "option2": "воспроизведение новых знаний", "option3": "учение о формах построения", "option4": "стратегия достижения цели", "option5": "план проведения научного", "correct": "1", "active": "TRUE"}, {"id": 44, "question": "План-проспект -", "option1": "это документ об основных", "option2": "научный документ", "option3": "это документ об основных", "option4": "это документ о принципах", "option5": "конспект научной работы", "correct": "1", "active": "TRUE"}, {"id": 45, "question": "Аннотация ―", "option1": "это краткая характеристика", "option2": "это краткая характеристика", "option3": "это документ об основных", "option4": "научный документ", "option5": "рецензия на статью", "correct": "1", "active": "TRUE"}, {"id": 46, "question": "Приложения представляют собой", "option1": "имеющую дополнительное значение,", "option2": "размещаются в начале издания.", "option3": "размечаются в конце каждой главы.", "option4": "имеющую основное значение.", "option5": "это содержание основного текста в", "correct": "1", "active": "TRUE"}, {"id": 47, "question": "Предметный указатель содержит", "option1": "перечень основных тематических", "option2": "перечень авторов", "option3": "список основных тематических", "option4": "список авторов", "option5": "список литературных источников", "correct": "1", "active": "TRUE"}, {"id": 48, "question": "Для научного текста характерны", "option1": "смысловая законченность,", "option2": "целостность и связность", "option3": "краткость", "option4": "смысловая законченность", "option5": "наличие жаргонизмов", "correct": "1", "active": "TRUE"}, {"id": 49, "question": "В научной работе речь чаще всего", "option1": "от третьего лица (\"автор", "option2": "первого лица", "option3": "от нейтрального лица", "option4": "второго лица единственного числа", "option5": "ответы б) и г) вместе", "correct": "1", "active": "TRUE"}, {"id": 50, "question": "Автор диссертации выступает", "option1": "во множественном числе и вместо", "option2": "от нейтрального лица", "option3": "в единственном лице", "option4": "во втором лице единственного", "option5": "ответы б) и г) вместе", "correct": "1", "active": "TRUE"}, {"id": 51, "question": "Важное качество для автора", "option1": "ясность, умение писать доступно и", "option2": "умение писать каллиграфически", "option3": "умение писать левой рукой.", "option4": "ясность.", "option5": "документальность", "correct": "1", "active": "TRUE"}, {"id": 52, "question": "Необходимое требование к", "option1": "умение объемно отражать детали и", "option2": "умение использовать повторы.", "option3": "краткость, умение избегать", "option4": "умение максимально использовать", "option5": "художественный замысел", "correct": "1", "active": "TRUE"}, {"id": 53, "question": "Итоговая работа для бакалавра ―", "option1": "это выпускная квалификационная", "option2": "это учебная  работа.", "option3": "это научный труд.", "option4": "это методический труд.", "option5": "это диссертация", "correct": "1", "active": "TRUE"}, {"id": 54, "question": "Выпускная квалификационная", "option1": "это магистерская диссертация.", "option2": "это научный труд.", "option3": "это методический труд.", "option4": "это дипломная работа.", "option5": "монография", "correct": "1", "active": "TRUE"}, {"id": 55, "question": "Текстовые выделения ―", "option1": "это буквы, знаки, слова,", "option2": "это знаки, слова, предложения с", "option3": "это знаки препинания.", "option4": "это буквы латинского алфавита.", "option5": "это цифры", "correct": "1", "active": "TRUE"}, {"id": 56, "question": "Цитируемый текст должен точно", "option1": "источнику с обязательной ссылкой", "option2": "задачам методической работы.", "option3": "задачам научной работы.", "option4": "содержанию научной работы", "option5": "плану научной работы", "correct": "1", "active": "TRUE"}, {"id": 57, "question": "Таблица ―", "option1": "организованный в вертикальные", "option2": "часть научного труда.", "option3": "метод изложения научного", "option4": "методика изложения методического", "option5": "принцип наглядности", "correct": "1", "active": "TRUE"}, {"id": 58, "question": "Каким должен быть иллюстративный", "option1": "он должен быть органически связан", "option2": "он должен быть максимально", "option3": "он должен быть обширным и", "option4": "он должен отсутствовать в научном", "option5": "ответы б) и в) вместе", "correct": "1", "active": "TRUE"}, {"id": 59, "question": "График (от греч. graphikos ―", "option1": "чертеж, применяемый для", "option2": "это разноцветный чертеж.", "option3": "это геометрическое изображение", "option4": "это часть научного труда.", "option5": "это вводная часть диссертации", "correct": "1", "active": "TRUE"}, {"id": 60, "question": "Диаграмма (от гр. diagramma ― рисунок,", "option1": "чертеж,\tнаглядно \tпоказывающий", "option2": "это основная часть научного", "option3": "это чертеж плана научной работы", "option4": "это графическое изображение", "option5": "ответы в) и г) вместе.", "correct": "1", "active": "TRUE"}, {"id": 61, "question": "Схема ―", "option1": "это иллюстрация, с помощью", "option2": "это чертеж, отражающий план", "option3": "это вводная часть научного труда.", "option4": "это иллюстрация цитирования.", "option5": "это план-конспект", "correct": "1", "active": "TRUE"}, {"id": 62, "question": "Библиографическое описание", "option1": "сведения о произведении печати", "option2": "это заключительная часть", "option3": "это краткое представление о", "option4": "это сведения об авторах.", "option5": "это аннотация", "correct": "1", "active": "TRUE"}, {"id": 63, "question": "Библиографический список", "option1": "библиографическое описание", "option2": "практические рекомендации", "option3": "аннотированное описание.", "option4": "методические замечания.", "option5": "список авторов научной работы", "correct": "1", "active": "TRUE"}, {"id": 64, "question": "В дипломных работах в", "option1": "только те источники, на которые", "option2": "любые источники по теме научной", "option3": "публикации автора диссертации.", "option4": "только публикации авторитетных", "option5": "только публикации научного", "correct": "1", "active": "TRUE"}, {"id": 65, "question": "Подпись к иллюстрации:", "option1": "это текст под иллюстрацией,", "option2": "это краткое резюме.", "option3": "это часть научного труда.", "option4": "это аннотация.", "option5": "роспись автора", "correct": "1", "active": "TRUE"}, {"id": 66, "question": "Выделения в тексте служат для", "option1": "чтобы разграничить части и", "option2": "чтобы обратили внимание на", "option3": "чтобы улучшить качество работы.", "option4": "для облегчения конспектирования", "option5": "", "correct": "1", "active": "TRUE"}, {"id": 67, "question": "Основной структурный элемент", "option1": "предметная рубрика,", "option2": "заключение.", "option3": "терминологический словарь.", "option4": "список авторов.", "option5": "библиографический список", "correct": "1", "active": "TRUE"}, {"id": 68, "question": "Произведения защищены авторским", "option1": "которое является собственностью", "option2": "которое является частью", "option3": "которое зачищено законом", "option4": "которое не облагается налогом", "option5": "которое имеет спрос у читателей", "correct": "1", "active": "TRUE"}, {"id": 69, "question": "Использование произведений", "option1": "путем опубликования, для научных", "option2": "изданием учебников", "option3": "изданием книг.", "option4": "изданием пособий и журналов", "option5": "для изучения", "correct": "1", "active": "TRUE"}, {"id": 70, "question": "Соавторство", "option1": "это создание произведения", "option2": "совместная деятельность", "option3": "совместное творчество", "option4": "совместная работа", "option5": "общая тема исследования", "correct": "1", "active": "TRUE"}, {"id": 71, "question": "Рецензия (от лат. recensio -", "option1": "критический разбор и оценка,", "option2": "выводы", "option3": "обобщение", "option4": "заключение", "option5": "аннотация", "correct": "1", "active": "TRUE"}, {"id": 72, "question": "Фундаментальные исследования", "option1": "на создание теории обучения и", "option2": "на разработку практических", "option3": "на обобщение научных результатов", "option4": "на создание теории обучения и", "option5": "на создание  научной гипотезы", "correct": "1", "active": "TRUE"}, {"id": 73, "question": "Прикладные исследования решают", "option1": "связанные с практикой, их", "option2": "связанные с научными открытиями.", "option3": "связанные с научными", "option4": "связанные с теорией", "option5": "связанные с решением неотложных", "correct": "1", "active": "TRUE"}, {"id": 74, "question": "Разработки содержат", "option1": "конечные результаты исследований", "option2": "выводы", "option3": "практические рекомендации", "option4": "теоретические обобщения.", "option5": "обобщенные гипотезы", "correct": "1", "active": "TRUE"}, {"id": 75, "question": "Стихийно-эмпирическое знание", "option1": "первично, существует давно и", "option2": "содержит теоретические вопросы", "option3": "вторично", "option4": "нейтрально", "option5": "содержат практические", "correct": "1", "active": "TRUE"}, {"id": 76, "question": "Научное познание отличается тем,", "option1": "в науке осуществляют не все, а", "option2": "в науке осуществляют не все, а", "option3": "в науке осуществляют не все, а", "option4": "в науке осуществляют не все, а", "option5": "в науке осуществляют не все, а", "correct": "1", "active": "TRUE"}, {"id": 77, "question": "Проблема указывает", "option1": "на неизвестное и побуждает к его", "option2": "на необходимость ее преодоления в", "option3": "на неизвестное.", "option4": "на определенные трудности в", "option5": "на отсутствие решения", "correct": "1", "active": "TRUE"}, {"id": 78, "question": "Обоснование проблемы", "option1": "предполагает поиск аргументов в", "option2": "предполагает поиск методов.", "option3": "предполагает поиск аргументов в", "option4": "связано с научной деятельностью.", "option5": "отсутствие результатов", "correct": "1", "active": "TRUE"}, {"id": 79, "question": "В формулировке темы", "option1": "должны просматриваться", "option2": "должна просматриваться", "option3": "должна просматриваться научная", "option4": "должна просматриваться", "option5": "должно быть обоснование проблемы", "correct": "1", "active": "TRUE"}, {"id": 80, "question": "Объект исследования –", "option1": "это явление или процесс,", "option2": "это процесс, избранный для", "option3": "это явление", "option4": "это явление, избранный для", "option5": "это  проблемный вопрос", "correct": "1", "active": "TRUE"}, {"id": 81, "question": "Предмет исследования -", "option1": "это то, что находится в границах", "option2": "это явление окружающей", "option3": "это научное определение.", "option4": "это то, на что направлено", "option5": "это научный взгляд на проблему", "correct": "1", "active": "TRUE"}, {"id": 82, "question": "Неправильный выбор объекта или", "option1": "может привести к ошибкам", "option2": "может привести к неправильным", "option3": "может привести к практическим", "option4": "может привести к теоретическим", "option5": "приводит к отсутствию результата", "correct": "1", "active": "TRUE"}, {"id": 83, "question": "Цель исследования -", "option1": "представление о результате, то,", "option2": "конечный результат", "option3": "направление научной работы", "option4": "улучшение здоровья населения", "option5": "в исследовательской", "correct": "1", "active": "TRUE"}, {"id": 84, "question": "Цель и задачи исследования", "option1": "позволяют определить логику,", "option2": "улучшение здоровья населения", "option3": "позволяют определить основные", "option4": "позволяют определить логику", "option5": "являются главой научной работы", "correct": "1", "active": "TRUE"}, {"id": 85, "question": "Гипотеза (от гр. hipothesis - основание,", "option1": "научное предположение, требующее", "option2": "теоретическое заключение", "option3": "научное решение", "option4": "практическое обобщение", "option5": "введение", "correct": "1", "active": "TRUE"}, {"id": 86, "question": "При завершении научной и", "option1": "какое новое знание получено и", "option2": "выводы.", "option3": "заключение", "option4": "какое новое знание получено", "option5": "список использованных источников", "correct": "1", "active": "TRUE"}, {"id": 87, "question": "Соискателю предоставляется", "option1": "обычно в пределах 20 мин", "option2": "обычно в пределах 8 мин", "option3": "обычно в пределах 10 мин", "option4": "обычно в пределах 40 мин", "option5": "обычно в пределах 50 мин", "correct": "1", "active": "TRUE"}, {"id": 88, "question": "Процедура защиты дипломных работ", "option1": "выставлением оценки.", "option2": "выводами", "option3": "голосованием.", "option4": "подведением итогов.", "option5": "аппеляцией", "correct": "1", "active": "TRUE"}, {"id": 89, "question": "В вузе одной из обязательных форм", "option1": "практика", "option2": "полевые занятия", "option3": "практические занятия", "option4": "лабораторные занятия", "option5": "стажировка", "correct": "1", "active": "TRUE"}, {"id": 90, "question": "Научные издания:", "option1": "монографии, статьи в", "option2": "монографии, статьи в", "option3": "сборники научных трудов,", "option4": "научно-практических конференций;", "option5": "энциклопедии", "correct": "1", "active": "TRUE"}, {"id": 91, "question": "Акты внедрения:", "option1": "свидетельство эффективности", "option2": "апробация научных результатов в", "option3": "документ, который выдается после", "option4": "выдается после апробации в", "option5": "это результат научной работы", "correct": "1", "active": "TRUE"}, {"id": 92, "question": "Значение научной работы для", "option1": "как основание для проведения", "option2": "как основание для обоснования", "option3": "как основание для выбора темы", "option4": "как основание для выбора проблемы", "option5": "как основание для определения", "correct": "1", "active": "TRUE"}, {"id": 93, "question": "При оценке новизны используются", "option1": "вид результата; уровень новизны", "option2": "вид результата", "option3": "уровень новизны результата.", "option4": "содержательное изложение", "option5": "обсуждение", "correct": "1", "active": "TRUE"}, {"id": 94, "question": "Обоснованное представление об", "option1": "Задачи исследования", "option2": "Цель исследования", "option3": "Гипотеза исследования", "option4": "Тема исследования", "option5": "обзор литературы", "correct": "1", "active": "TRUE"}, {"id": 95, "question": "Не входит в общий объем", "option1": "приложение", "option2": "титульный лист", "option3": "введение", "option4": "содержание", "option5": "иллюстрации и таблицы", "correct": "1", "active": "TRUE"}, {"id": 96, "question": "Познание - это:", "option1": "способность воспринимать,", "option2": "способность человека рассуждать,", "option3": "исторический процесс", "option4": "степень сознательности,", "option5": "особенности восприятия проблемы", "correct": "1", "active": "TRUE"}, {"id": 97, "question": "Логика- это:", "option1": "наука о сущности познания", "option2": "наука о противоречии познания", "option3": "учение о бытии", "option4": "учение о познании", "option5": "наука о жизни", "correct": "1", "active": "TRUE"}, {"id": 98, "question": "Гносеология - это:", "option1": "учение о познании", "option2": "учение о бытии", "option3": "учение о душе", "option4": "учение о боге.", "option5": "учение о космосе", "correct": "1", "active": "TRUE"}, {"id": 99, "question": "Умышленно совершаемое", "option1": "плагиат", "option2": "авторское право", "option3": "диссертация", "option4": "автореферат", "option5": "авторская ссылка", "correct": "1", "active": "TRUE"}, {"id": 100, "question": "Институт гражданского права,", "option1": "авторское право", "option2": "плагиат", "option3": "институт интеллектуальной", "option4": "патент", "option5": "авторская ссылка", "correct": "1", "active": "TRUE"}, {"id": 101, "question": "Процедура рассмотрения научных", "option1": "рецензирование", "option2": "реферирование", "option3": "аннотация", "option4": "отзыв", "option5": "ответы б) и г) вместе", "correct": "1", "active": "TRUE"}, {"id": 102, "question": "Система регулятивных принципов,", "option1": "научный метод", "option2": "научный способ", "option3": "научный принцип", "option4": "научный подход", "option5": "научный прием", "correct": "1", "active": "TRUE"}, {"id": 103, "question": "Эмпирические исследования – это:", "option1": "ответы б), в), г) и д) вместе", "option2": "наблюдение и исследование", "option3": "эксперименты,", "option4": "обобщение, классификация", "option5": "описание результатов", "correct": "1", "active": "TRUE"}, {"id": 104, "question": "Литературный жанр, прозаическое", "option1": "эссе", "option2": "рассказ", "option3": "доклад", "option4": "реферат", "option5": "статья", "correct": "1", "active": "TRUE"}, {"id": 105, "question": "Исследования, при которых", "option1": "теоретические исследования", "option2": "эмпирические исследования", "option3": "эксперименты", "option4": "обобщение, классификация", "option5": "описание результатов", "correct": "1", "active": "TRUE"}, {"id": 106, "question": "Безвозмездная субсидия", "option1": "Грант", "option2": "премия", "option3": "награда", "option4": "беспроцентная ссуда", "option5": "кредит", "correct": "1", "active": "TRUE"}, {"id": 107, "question": "Начальная часть или глава", "option1": "Введение", "option2": "выводы", "option3": "заключение", "option4": "результаты", "option5": "обсуждение", "correct": "1", "active": "TRUE"}, {"id": 108, "question": "Заключение, сформулированное по", "option1": "выводы", "option2": "введение", "option3": "приложение", "option4": "результаты", "option5": "обсуждение", "correct": "1", "active": "TRUE"}, {"id": 109, "question": "Часть введения, отражающая", "option1": "Актуальность темы", "option2": "проблема исследования", "option3": "цели и задачи исследования", "option4": "материалы и методы", "option5": "выводы", "correct": "1", "active": "TRUE"}, {"id": 110, "question": "Содержание, выстроенное логично", "option1": "план научного произведения", "option2": "основная часть научной работы", "option3": "содержание диссертации с", "option4": "перспективный план научной", "option5": "стратегический план научной", "correct": "1", "active": "TRUE"}, {"id": 111, "question": "В какой части дипломной работы", "option1": "после введения,", "option2": "после основной части", "option3": "перед выводами", "option4": "в приложении", "option5": "в разделе «Список использованных", "correct": "1", "active": "TRUE"}, {"id": 112, "question": "Набор слов, отражающих", "option1": "ключевые слова", "option2": "терминологический словарь", "option3": "предметный указатель", "option4": "обозначения и сокращения", "option5": "определения", "correct": "1", "active": "TRUE"}, {"id": 113, "question": "Рекомендуемое количество", "option1": "5-7", "option2": "15-20", "option3": "2-3", "option4": "120", "option5": "не менее 60", "correct": "1", "active": "TRUE"}, {"id": 114, "question": "Оглавление и содержание ―", "option1": "обязательные элементы", "option2": "разделы научной работы.", "option3": "разделы книги.", "option4": "разделы методической работы.", "option5": "составные части титульного листа", "correct": "1", "active": "TRUE"}, {"id": 115, "question": "Резюме (от франц. resumer ― излагать", "option1": "это краткое, в виде выводов,", "option2": "это заключение", "option3": "это практические рекомендации.", "option4": "это выводы.", "option5": "это аннотация на статью", "correct": "1", "active": "TRUE"}, {"id": 116, "question": "Какой метод исследования", "option1": "наблюдение", "option2": "сравнение;", "option3": "анализ;", "option4": "синтез;", "option5": "классификация.", "correct": "1", "active": "TRUE"}, {"id": 117, "question": ". Как называется упорядоченный", "option1": "вариационный ряд;", "option2": "весы вариант;", "option3": "частоты вариант;", "option4": "объем вариант;", "option5": "все ответы верны.", "correct": "1", "active": "TRUE"}, {"id": 118, "question": "Абзац представляет собой", "option1": "отступ вправо в начале первой", "option2": "отступ влево в начале первой", "option3": "отступ вверху.", "option4": "отступ внизу.", "option5": "начало каждой главы", "correct": "1", "active": "TRUE"}, {"id": 119, "question": "Какие биологические признаки", "option1": "длина колосьев, число зерен в", "option2": "цвет радужной оболочки глаз;", "option3": "состояние здоровья населения;", "option4": "запах цветов;", "option5": "вкус и прозрачность воды.", "correct": "1", "active": "TRUE"}, {"id": 120, "question": "Важное качество для автора", "option1": "ясность, умение писать доступно и", "option2": "умение писать каллиграфически", "option3": "умение писать левой рукой.", "option4": "ясность.", "option5": "документальность", "correct": "1", "active": "TRUE"}];
 
-const CONFIG = {
-    QUESTIONS_COUNT: 30,
-    TIME_MINUTES: 30,
-    STORAGE_KEY: 'test_completed_nid_2024',
-    BLOCK_HOURS: 24
-};
+        const CONFIG = {
+            QUESTIONS_COUNT: 30,
+            TIME_MINUTES: 30,
+            STORAGE_KEY: 'test_completed_nid_2024',
+            BLOCK_HOURS: 24
+        };
 
-let state = {
-    questions: [],
-    currentQuestion: 0,
-    answers: {},
-    startTime: null,
-    timerInterval: null,
-    studentName: ''
-};
+        let state = {
+            questions: [],
+            currentQuestion: 0,
+            answers: {},
+            startTime: null,
+            timerInterval: null,
+            studentName: ''
+        };
 
-function checkBlock() {
-    const completed = localStorage.getItem(CONFIG.STORAGE_KEY);
-    if (completed) {
-        const data = JSON.parse(completed);
-        const blockMs = CONFIG.BLOCK_HOURS * 60 * 60 * 1000;
-        if (Date.now() - data.timestamp < blockMs) {
-            const date = new Date(data.timestamp);
-            document.getElementById('lastAttempt').textContent = date.toLocaleString('ru', { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' });
-            showScreen('blockedScreen');
-            return true;
+        function checkBlock() {
+            const completed = localStorage.getItem(CONFIG.STORAGE_KEY);
+            if (completed) {
+                const data = JSON.parse(completed);
+                const blockMs = CONFIG.BLOCK_HOURS * 60 * 60 * 1000;
+                if (Date.now() - data.timestamp < blockMs) {
+                    const date = new Date(data.timestamp);
+                    document.getElementById('lastAttempt').textContent = 
+                        date.toLocaleString('ru', { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' });
+                    showScreen('blockedScreen');
+                    return true;
+                }
+            }
+            return false;
         }
-    }
-    return false;
-}
 
-function loadQuestions() {
-    showScreen('loadingScreen');
-    setTimeout(() => {
-        const activeQuestions = QUESTIONS_DB.filter(q => q.active !== 'FALSE' && q.active !== false && q.active !== '0');
-        const shuffled = shuffleArray([...activeQuestions]);
-        state.questions = shuffled.slice(0, Math.min(CONFIG.QUESTIONS_COUNT, shuffled.length));
-        state.questions = state.questions.map(q => shuffleQuestionOptions(q));
-        showScreen('startScreen');
-    }, 500);
-}
-
-function shuffleQuestionOptions(question) {
-    const options = [];
-    const optFields = ['option1', 'option2', 'option3', 'option4', 'option5'];
-    optFields.forEach((field, idx) => {
-        if (question[field] && question[field].trim() !== '') {
-            options.push({ text: question[field], correct: question.correct == String(idx + 1) });
+        function loadQuestions() {
+            showScreen('loadingScreen');
+            setTimeout(() => {
+                const activeQuestions = QUESTIONS_DB.filter(q => q.active !== 'FALSE' && q.active !== false && q.active !== '0');
+                const shuffled = shuffleArray([...activeQuestions]);
+                state.questions = shuffled.slice(0, Math.min(CONFIG.QUESTIONS_COUNT, shuffled.length));
+                state.questions = state.questions.map(q => shuffleQuestionOptions(q));
+                showScreen('startScreen');
+            }, 500);
         }
-    });
-    const shuffled = shuffleArray(options);
-    const newCorrectIndex = shuffled.findIndex(o => o.correct);
-    return {
-        id: question.id,
-        question: question.question,
-        options: shuffled.map(o => o.text),
-        correct: newCorrectIndex >= 0 ? newCorrectIndex + 1 : 1
-    };
-}
 
-function startTest() {
-    const name = document.getElementById('studentName').value.trim();
-    if (!name || name.length < 2) {
-        showError('Введите корректное имя (минимум 2 символа)');
-        return;
-    }
-    if (checkBlock()) return;
-    state.studentName = name;
-    state.currentQuestion = 0;
-    state.answers = {};
-    state.startTime = Date.now();
-    document.getElementById('timer').classList.remove('hidden');
-    startTimer();
-    showQuestion();
-    showScreen('questionScreen');
-}
+        function shuffleQuestionOptions(question) {
+            const options = [];
+            const optFields = ['option1', 'option2', 'option3', 'option4', 'option5'];
+            optFields.forEach((field, idx) => {
+                if (question[field] && question[field].trim() !== '') {
+                    options.push({ text: question[field], correct: question.correct == String(idx + 1) });
+                }
+            });
+            const shuffled = shuffleArray(options);
+            const newCorrectIndex = shuffled.findIndex(o => o.correct);
+            return {
+                id: question.id,
+                question: question.question,
+                options: shuffled.map(o => o.text),
+                correct: newCorrectIndex >= 0 ? newCorrectIndex + 1 : 1
+            };
+        }
 
-function startTimer() {
-    const endTime = state.startTime + CONFIG.TIME_MINUTES * 60 * 1000;
-    state.timerInterval = setInterval(() => {
-        const remaining = Math.max(0, endTime - Date.now());
-        const minutes = Math.floor(remaining / 60000);
-        const seconds = Math.floor((remaining % 60000) / 1000);
-        const timerEl = document.getElementById('timer');
-        const timerText = document.getElementById('timerText');
-        timerText.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
-        timerEl.classList.remove('warning', 'critical');
-        if (remaining <= 300000 && remaining > 60000) timerEl.classList.add('warning');
-        else if (remaining <= 60000) timerEl.classList.add('critical');
-        if (remaining <= 0) finishTest(true);
-    }, 1000);
-}
+        function startTest() {
+            const name = document.getElementById('studentName').value.trim();
+            if (!name || name.length < 2) {
+                showError('Введите корректное имя (минимум 2 символа)');
+                return;
+            }
+            if (checkBlock()) return;
+            state.studentName = name;
+            state.currentQuestion = 0;
+            state.answers = {};
+            state.startTime = Date.now();
+            document.getElementById('timer').classList.remove('hidden');
+            startTimer();
+            showQuestion();
+            showScreen('questionScreen');
+        }
 
-function showQuestion() {
-    const q = state.questions[state.currentQuestion];
-    const progress = ((state.currentQuestion) / state.questions.length) * 100;
-    document.getElementById('progressFill').style.width = progress + '%';
-    document.getElementById('progressText').textContent = `Вопрос ${state.currentQuestion + 1} из ${state.questions.length}`;
-    document.getElementById('progressPercent').textContent = Math.round(progress) + '%';
-    document.getElementById('questionNumber').textContent = `Вопрос ${state.currentQuestion + 1}`;
-    document.getElementById('questionText').textContent = q.question;
-    const container = document.getElementById('optionsContainer');
-    container.innerHTML = '';
-    const letters = ['A', 'B', 'C', 'D', 'E'];
-    q.options.forEach((option, index) => {
-        const div = document.createElement('div');
-        div.className = 'option';
-        div.innerHTML = `<span class="option-letter">${letters[index]}</span><span>${escapeHtml(option)}</span>`;
-        div.onclick = () => selectOption(index);
-        container.appendChild(div);
-    });
-    const nextBtn = document.getElementById('nextBtn');
-    nextBtn.disabled = true;
-    nextBtn.textContent = state.currentQuestion === state.questions.length - 1 ? '✓ Завершить тест' : 'Далее →';
-    const card = document.getElementById('questionScreen');
-    card.style.animation = 'none';
-    void card.offsetWidth;
-    card.style.animation = 'slideInRight 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
-}
+        function startTimer() {
+            const endTime = state.startTime + CONFIG.TIME_MINUTES * 60 * 1000;
+            state.timerInterval = setInterval(() => {
+                const remaining = Math.max(0, endTime - Date.now());
+                const minutes = Math.floor(remaining / 60000);
+                const seconds = Math.floor((remaining % 60000) / 1000);
+                const timerEl = document.getElementById('timer');
+                const timerText = document.getElementById('timerText');
+                timerText.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+                timerEl.classList.remove('warning', 'critical');
+                if (remaining <= 300000 && remaining > 60000) timerEl.classList.add('warning');
+                else if (remaining <= 60000) timerEl.classList.add('critical');
+                if (remaining <= 0) finishTest(true);
+            }, 1000);
+        }
 
-function selectOption(index) {
-    const options = document.querySelectorAll('.option');
-    options.forEach((opt, i) => opt.classList.toggle('selected', i === index));
-    state.answers[state.currentQuestion] = index;
-    document.getElementById('nextBtn').disabled = false;
-}
+        function showQuestion() {
+            const q = state.questions[state.currentQuestion];
+            const progress = ((state.currentQuestion) / state.questions.length) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('progressText').textContent = `Вопрос ${state.currentQuestion + 1} из ${state.questions.length}`;
+            document.getElementById('progressPercent').textContent = Math.round(progress) + '%';
+            document.getElementById('questionNumber').textContent = `Вопрос ${state.currentQuestion + 1}`;
+            document.getElementById('questionText').textContent = q.question;
+            const container = document.getElementById('optionsContainer');
+            container.innerHTML = '';
+            const letters = ['A', 'B', 'C', 'D', 'E'];
+            q.options.forEach((option, index) => {
+                const div = document.createElement('div');
+                div.className = 'option';
+                div.innerHTML = `<span class="option-letter">${letters[index]}</span><span>${escapeHtml(option)}</span>`;
+                div.onclick = () => selectOption(index);
+                container.appendChild(div);
+            });
+            const nextBtn = document.getElementById('nextBtn');
+            nextBtn.disabled = true;
+            nextBtn.textContent = state.currentQuestion === state.questions.length - 1 ? '✓ Завершить тест' : 'Далее →';
+            const card = document.getElementById('questionScreen');
+            card.style.animation = 'none';
+            void card.offsetWidth;
+            card.style.animation = 'slideInRight 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+        }
 
-function nextQuestion() {
-    if (state.currentQuestion < state.questions.length - 1) {
-        state.currentQuestion++;
-        showQuestion();
-    } else {
-        finishTest(false);
-    }
-}
+        function selectOption(index) {
+            const options = document.querySelectorAll('.option');
+            options.forEach((opt, i) => opt.classList.toggle('selected', i === index));
+            state.answers[state.currentQuestion] = index;
+            document.getElementById('nextBtn').disabled = false;
+        }
 
-function finishTest(timeUp = false) {
-    clearInterval(state.timerInterval);
-    let correct = 0;
-    state.questions.forEach((q, i) => {
-        if (state.answers[i] === q.correct - 1) correct++;
-    });
-    const timeSpent = Math.floor((Date.now() - state.startTime) / 1000);
-    const percent = Math.round((correct / state.questions.length) * 100);
-    let grade = '2';
-    if (percent >= 90) grade = '5';
-    else if (percent >= 75) grade = '4';
-    else if (percent >= 60) grade = '3';
-    const gradeColors = { '5': 'grade-5', '4': 'grade-4', '3': 'grade-3', '2': 'grade-2' };
+        function nextQuestion() {
+            if (state.currentQuestion < state.questions.length - 1) {
+                state.currentQuestion++;
+                showQuestion();
+            } else {
+                finishTest(false);
+            }
+        }
 
-    localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify({
-        timestamp: Date.now(),
-        name: state.studentName,
-        score: correct,
-        total: state.questions.length
-    }));
+        function finishTest(timeUp = false) {
+            clearInterval(state.timerInterval);
+            let correct = 0;
+            state.questions.forEach((q, i) => {
+                if (state.answers[i] === q.correct - 1) correct++;
+            });
+            const timeSpent = Math.floor((Date.now() - state.startTime) / 1000);
+            const percent = Math.round((correct / state.questions.length) * 100);
+            let grade = '2';
+            if (percent >= 90) grade = '5';
+            else if (percent >= 75) grade = '4';
+            else if (percent >= 60) grade = '3';
+            const gradeColors = { '5': 'grade-5', '4': 'grade-4', '3': 'grade-3', '2': 'grade-2' };
 
-    const allResults = JSON.parse(localStorage.getItem('test_results') || '[]');
-    allResults.push({
-        timestamp: new Date().toISOString(),
-        name: state.studentName,
-        score: correct,
-        total: state.questions.length,
-        percent: percent,
-        timeSpent: timeSpent,
-        grade: grade
-    });
-    localStorage.setItem('test_results', JSON.stringify(allResults));
+            localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify({
+                timestamp: Date.now(),
+                name: state.studentName,
+                score: correct,
+                total: state.questions.length
+            }));
 
-    const gradeCircle = document.getElementById('gradeCircle');
-    gradeCircle.textContent = grade;
-    gradeCircle.className = 'grade-circle ' + (gradeColors[grade] || 'grade-3');
-    document.getElementById('scoreDisplay').textContent = `${correct}/${state.questions.length}`;
-    const timeStr = timeUp ? 'Время вышло!' : 'Отличная работа!';
-    document.getElementById('resultDetails').innerHTML = `${timeStr}<br><strong>${escapeHtml(state.studentName)}</strong>`;
-    document.getElementById('percentValue').textContent = percent + '%';
-    document.getElementById('timeValue').textContent = `${Math.floor(timeSpent/60)}:${(timeSpent%60).toString().padStart(2,'0')}`;
-    document.getElementById('gradeValue').textContent = grade;
-    document.getElementById('timer').classList.add('hidden');
-    showScreen('resultScreen');
-    if (percent >= 60) createConfetti();
-}
+            const allResults = JSON.parse(localStorage.getItem('test_results') || '[]');
+            allResults.push({
+                timestamp: new Date().toISOString(),
+                name: state.studentName,
+                score: correct,
+                total: state.questions.length,
+                percent: percent,
+                timeSpent: timeSpent,
+                grade: grade
+            });
+            localStorage.setItem('test_results', JSON.stringify(allResults));
 
-function shuffleArray(array) {
-    const arr = [...array];
-    for (let i = arr.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [arr[i], arr[j]] = [arr[j], arr[i]];
-    }
-    return arr;
-}
+            const gradeCircle = document.getElementById('gradeCircle');
+            gradeCircle.textContent = grade;
+            gradeCircle.className = 'grade-circle ' + (gradeColors[grade] || 'grade-3');
+            document.getElementById('scoreDisplay').textContent = `${correct}/${state.questions.length}`;
+            const timeStr = timeUp ? 'Время вышло!' : 'Отличная работа!';
+            document.getElementById('resultDetails').innerHTML = `${timeStr}<br><strong>${escapeHtml(state.studentName)}</strong>`;
+            document.getElementById('percentValue').textContent = percent + '%';
+            document.getElementById('timeValue').textContent = `${Math.floor(timeSpent/60)}:${(timeSpent%60).toString().padStart(2,'0')}`;
+            document.getElementById('gradeValue').textContent = grade;
+            document.getElementById('timer').classList.add('hidden');
+            showScreen('resultScreen');
+            if (percent >= 60) createConfetti();
+        }
 
-function showScreen(id) {
-    ['startScreen', 'questionScreen', 'resultScreen', 'blockedScreen', 'loadingScreen'].forEach(s => document.getElementById(s).classList.add('hidden'));
-    document.getElementById(id).classList.remove('hidden');
-}
+        function shuffleArray(array) {
+            const arr = [...array];
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
 
-function showError(msg) {
-    const el = document.getElementById('errorMsg');
-    el.textContent = msg;
-    el.style.display = 'block';
-    setTimeout(() => el.style.display = 'none', 5000);
-}
+        function showScreen(id) {
+            ['startScreen', 'questionScreen', 'resultScreen', 'blockedScreen', 'loadingScreen']
+                .forEach(s => document.getElementById(s).classList.add('hidden'));
+            document.getElementById(id).classList.remove('hidden');
+        }
 
-function escapeHtml(text) {
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
-}
+        function showError(msg) {
+            const el = document.getElementById('errorMsg');
+            el.textContent = msg;
+            el.style.display = 'block';
+            setTimeout(() => el.style.display = 'none', 5000);
+        }
 
-function createConfetti() {
-    const colors = ['#6366f1', '#ec4899', '#22c55e', '#f59e0b', '#ef4444', '#8b5cf6', '#06b6d4'];
-    for (let i = 0; i < 60; i++) {
-        const confetti = document.createElement('div');
-        confetti.className = 'confetti';
-        confetti.style.left = Math.random() * 100 + 'vw';
-        confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
-        confetti.style.width = (Math.random() * 10 + 5) + 'px';
-        confetti.style.height = (Math.random() * 10 + 5) + 'px';
-        confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
-        confetti.style.animationDelay = Math.random() * 3 + 's';
-        confetti.style.animationDuration = (Math.random() * 2 + 3) + 's';
-        document.body.appendChild(confetti);
-        setTimeout(() => confetti.remove(), 6000);
-    }
-}
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
 
-window.onload = () => {
-    if (checkBlock()) return;
-    loadQuestions();
-};
+        function createConfetti() {
+            const colors = ['#6366f1', '#ec4899', '#22c55e', '#f59e0b', '#ef4444', '#8b5cf6', '#06b6d4'];
+            for (let i = 0; i < 60; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.width = (Math.random() * 10 + 5) + 'px';
+                confetti.style.height = (Math.random() * 10 + 5) + 'px';
+                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                confetti.style.animationDelay = Math.random() * 3 + 's';
+                confetti.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 6000);
+            }
+        }
 
-window.onbeforeunload = () => {
-    if (state.currentQuestion > 0 && state.currentQuestion < state.questions.length) {
-        return 'Вы уверены? Прогресс будет потерян!';
-    }
-};
+        window.onload = () => {
+            if (checkBlock()) return;
+            loadQuestions();
+        };
+
+        window.onbeforeunload = () => {
+            if (state.currentQuestion > 0 && state.currentQuestion < state.questions.length) {
+                return 'Вы уверены? Прогресс будет потерян!';
+            }
+        };
     </script>
 </body>
 </html>
